@@ -1,4 +1,4 @@
-import { getCity } from "../../services/api.js";
+import { getCity } from "../../services/oldapi.js";
 
 export async function makeDropDown(cityStr){
     const container = document.querySelector(".drop-container");
@@ -6,7 +6,7 @@ export async function makeDropDown(cityStr){
         while(container.firstChild){
             container.removeChild(container.firstChild);
         }
-        // container.remove();
+        container.remove();
     }
     const dropContainer = document.createElement('ol');
         dropContainer.classList.add("drop-container");

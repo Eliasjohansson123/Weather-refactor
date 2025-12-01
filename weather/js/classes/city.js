@@ -1,4 +1,4 @@
-import { getCity, getWeather } from "../services/api.js";
+import { getCity, getWeather } from "../services/oldapi.js";
 import { weatherEmojis } from "../services/weathercodes.js";
 
 export class City {

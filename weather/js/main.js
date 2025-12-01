@@ -1,10 +1,11 @@
 import { City } from "./classes/city.js";
 import { handleText } from "./services/inputs.js";
 import { historyListHandler } from "./functions/HistoryList/historyListHandler.js";
-import { getCity, getWeather} from "./services/api.js";
+//import { getCity, getWeather} from "./services/oldapi.js";
 import { makeDropDown } from "./functions/dropDown/dropdown.js";
 import { Build } from "./classes/build.js";
 import { History } from "./classes/History.js";
+import { getCity, getWeather } from "./services/newApi.js";
 
 
 const mainTag = document.querySelector("main");
@@ -27,7 +28,6 @@ sendButtonEl.addEventListener("click", async () => {
     // Index kopierar key och skickas till city-instansieringen.
     dropDown.element.addEventListener("click", async event => {
         let index = findIndexOfDropItem(event);
-        console.log("index: ", index);
         const city = new City(handleText(textInputEl.value), index);
         await city.fetchCity();
 
@@ -72,3 +72,7 @@ function findIndexOfDropItem(event) {
     return children.indexOf(event.target);
 }
 //      Testing
+
+const sundsvall = await getCity("Sundsvall");
+const weather = await getWeather(sundsvall.lat, sundsvall.lon);
+console.log(sundsvall);
