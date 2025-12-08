@@ -17,7 +17,9 @@ const sendButtonEl = document.querySelector("#send-input");
 
 let historyList = new History(historyEl);
 
-sendButtonEl.addEventListener("click", async () => {
+textInputEl.addEventListener("input", async () => {
+  if (!textInputEl.value.trim()) return;
+
   const dropDown = await makeDropDown(textInputEl.value);
 
   // dropDown.element.children ger Key:value par där key är ordningen av barnen i containern.
