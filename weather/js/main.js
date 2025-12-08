@@ -13,7 +13,7 @@ const forecastEl = document.querySelector("#forecast");
 const historyEl = document.querySelector("#history");
 const textInputEl = document.querySelector("input");
 const inputWrapperEl = document.querySelector(".input-wrapper");
-const sendButtonEl = document.querySelector("#send-input");
+/* const sendButtonEl = document.querySelector("#send-input"); */
 
 let historyList = new History(historyEl);
 
