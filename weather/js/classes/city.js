@@ -1,5 +1,6 @@
 import { getCity, getWeather } from '../services/oldapi.js';
 import { weatherEmojis } from '../services/weathercodes.js';
+import { setWeatherBackground } from '../functions/dynamicBackground.js';
 
 export class City {
   // cityName är stadsnamnet sim skickas in till getCity API-call, CityIndex är vilket index i City som vi vill ha
@@ -24,7 +25,15 @@ export class City {
     const weather = await getWeather(this.lat, this.lon);
     this.weatherNow = weather.current;
     this.futureWeather = weather.daily;
+
+    // insert the dynamic background here
+    const weatherCode = this.weatherNow.weather_code;
+    setWeatherBackground(weatherCode);
+
+
   }
+
+
   buildForecast(parent) {
     parent.innerHTML = '';
     for (let i = 1; i < 7; i++) {
@@ -40,8 +49,6 @@ export class City {
         month: 'short',
         day: 'numeric',
       });
-      
-
 
       forecastText.textContent = `
             ${formattedDate}

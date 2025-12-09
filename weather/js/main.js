@@ -7,6 +7,7 @@ import { Build } from "./classes/build.js";
 import { History } from "./classes/History.js";
 import { getCity, getWeather } from "./services/newApi.js";
 
+
 const mainTag = document.querySelector("main");
 const mainWeatherEl = document.querySelector("#main-weather");
 const forecastEl = document.querySelector("#forecast");
