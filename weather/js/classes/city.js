@@ -1,4 +1,5 @@
-import { getCity, getWeather } from "../services/oldapi.js";
+import { getCity, getWeather } from "../services/newApi.js";
+// import { getCity, getWeather } from "../services/oldapi.js";
 import { weatherEmojis } from "../services/weathercodes.js";
 
 export class City {
@@ -14,39 +15,48 @@ export class City {
         this.cityIndex = cityIndex;
     }
     async fetchCity(){
-
         const city = await getCity(this.cityName);
-        console.log("fetching city...", city);
-        this.fetchedCity = city.results[this.cityIndex];
 
+        console.log("fetching city...", city);
+        
+        this.fetchedCity = city.results[this.cityIndex];
         this.cityName = this.fetchedCity.name;
         this.lat = city.results[this.cityIndex].latitude;
         this.lon = city.results[this.cityIndex].longitude;
-
+        
         const weather = await getWeather(this.lat, this.lon);
         this.weatherNow = weather.current;
         this.futureWeather = weather.daily;
     }     
     buildForecast(parent){
+        // DOM elements for forcast
         parent.innerHTML = "";
-        for(let i = 1; i < 7;i++){
-            const cont = document.createElement('div');
-            cont.classList.add("forecast-box");
-            const forecastText = document.createElement("p");
-            forecastText.classList.add("forecast-text");
-            
-            forecastText.textContent = `
-            ${this.futureWeather.time[i]}
-            temperatures: 
-            ${this.futureWeather.temperature_2m_max[i]}
-            - 
-            ${this.futureWeather.temperature_2m_min[i]}
-            ${weatherEmojis[this.futureWeather.weather_code[i]]}
-            `;
-            cont.appendChild(forecastText);
-            parent.appendChild(cont);
+        if(this.futureWeather) {
+            for(let i = 1; i < 7;i++){
+                const cont = document.createElement('div');
+                cont.classList.add("forecast-box");
+                const forecastText = document.createElement("p");
+                forecastText.classList.add("forecast-text");
+                
+                forecastText.textContent = `
+                ${this.futureWeather.time[i]}
+                temperatures: 
+                ${this.futureWeather.temperature_2m_max[i]}
+                - 
+                ${this.futureWeather.temperature_2m_min[i]}
+                ${weatherEmojis[this.futureWeather.weather_code[i]]}
+                `;
+                cont.appendChild(forecastText);
+                parent.appendChild(cont);
+            }
+        } else {
+            const noForecast = document.createElement("div")
+            noForecast.classList.add("forecast-box")
+            const noForecastMessage = document.createElement("p")
+            noForecastMessage.textContent = "Forecasts are not provided from weather service"
+            parent.appendChild(noForecast)
+            noForecast.appendChild(noForecastMessage)
         }
-        // DOM-Manip
     }
     buildMainWeather(parent){
         parent.innerHTML = `
