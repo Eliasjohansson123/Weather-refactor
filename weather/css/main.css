@@ -136,6 +136,10 @@ header {
   margin: 2rem 0;
   padding: 0.5rem;
 }
+.visually-hidden {
+  position: absolute;
+  left: -9999px;
+}
 
 .history-card {
   display: flex;
