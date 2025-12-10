@@ -32,6 +32,8 @@ body {
   --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
   --glass-blur: blur(6px);
   --glass-radius: 20px;
+
+  --wcag-button-padding: 0.5rem 1rem;
 }
 
 /* Typography */
@@ -75,13 +77,26 @@ section {
 
 header {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .drop-container {
   position: absolute;
   top: 10%;
   z-index: 1000;
+}
+.input-container {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.input-wrapper {
+  width: 100%;
 }
 
 /* ---- Forecast / history group ----- */
@@ -156,6 +171,30 @@ header {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 } */
+
+/*wcag*/
+#send-input {
+  padding: var(--wcag-button-padding);
+  min-height: 44px;
+  min-width: 44px;
+  border-radius: 5px;
+  border: none;
+}
+#send-input:focus,
+#input:focus {
+  outline: 3px solid #005fcc;
+  outline-offset: 3px;
+}
+#input {
+  min-height: 40px;
+  width: 20rem;
+  border-radius: 5px;
+  border: none;
+}
+p {
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+}
 
 @media (max-width: 900px) {
   .weather-container {
@@ -247,16 +286,7 @@ li {
   flex: 1 1 calc(100% / 3);
 }
 
-.input-wrapper {
-  position: relative;
-  max-width: auto;
-  display: grid;
-  grid-template-columns: auto 50px;
-  grid-template-areas:
-    "search send"
-    "list list";
-  justify-content: center;
-}
+
 
 #input {
   justify-self: stretch;
@@ -278,10 +308,7 @@ li {
   text-align: left;
   padding: 6px 10px;
 }
-#send-input {
-  width: 50px;
-  grid-area: send;
-}
+
 
 .drop-container {
   grid-area: list;
