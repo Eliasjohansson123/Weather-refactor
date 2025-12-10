@@ -3,9 +3,14 @@
   padding: 0;
 }
 body {
-  background-image: url("../images/images/lightning.jpg");
+  /* font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; */
+  font-family: Domine;
+
   background-size: cover;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100vh;
 }
 
 :root {
@@ -92,8 +97,8 @@ li {
   display: grid;
   grid-template-columns: auto 50px;
   grid-template-areas:
-    "search send"
-    "list list";
+    'search send'
+    'list list';
   justify-content: center;
 }
 
@@ -126,4 +131,29 @@ li {
   grid-area: list;
   margin-top: 10px;
   color: white;
+}
+
+/* background images */
+
+.sun {
+  background-image: url('/weather/images/sun.jpg');
+}
+.cloudy {
+  background-image: url('/weather/images/cloudy.jpg');
+}
+
+.foggy {
+  background-image: url('/weather/images/foggy.jpg');
+}
+
+.rain {
+  background-image: url('/weather/images/rain.jpg');
+}
+
+.snow {
+  background-image: url('/weather/images/snow.jpg');
+}
+
+.lightning {
+  background-image: url('/weather/images/lightning.jpg');
 }
