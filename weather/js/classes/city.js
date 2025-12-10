@@ -1,6 +1,8 @@
-import { getCity, getWeather } from '../services/oldapi.js';
+
+import { getCity, getWeather } from "../services/newApi.js";
 import { weatherEmojis } from '../services/weathercodes.js';
 import { setWeatherBackground } from '../functions/dynamicBackground.js';
+// import { getCity, getWeather } from "../services/oldapi.js";
 
 export class City {
   // cityName är stadsnamnet sim skickas in till getCity API-call, CityIndex är vilket index i City som vi vill ha

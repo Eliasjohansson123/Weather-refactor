@@ -1,4 +1,5 @@
-import { getCity } from "../../services/oldapi.js";
+import { getCity } from "../../services/newApi.js";
+// import { getCity } from "../../services/oldapi.js";
 
 export async function makeDropDown(cityStr) {
   const container = document.querySelector(".drop-container");
