@@ -11,37 +11,52 @@
     <main>
       <!-- Search / Input Area -->
       <header>
-        <div class="input-wrapper">
-          <h2>Search for your city</h2>
+        <form class="input-wrapper" aria-labelledby="city-search-label">
+          <h2 id="city-search-label">Search for your city</h2>
+
           <div class="input-container">
-            <input id="input" placeholder="Type a City" type="text" />
+            <label for="input" class="visually-hidden"
+              >Stad att söka efter</label
+            >
+            <input
+              id="input"
+              placeholder="Sök efter din stad"
+              type="text"
+              autocomplete="off"
+            />
+
             <button type="button" id="send-input">Skicka</button>
           </div>
-        </div>
+        </form>
       </header>
 
       <!-- Weather Content -->
       <section class="info">
         <div class="weather-container">
           <!-- Current Weather -->
-          <div
+
+          <section
             id="main-weather"
             class="column"
-            aria-label="Current weather"
-          ></div>
+            aria-labelledby="Current weather"
+          >
+            <h2 id="current-weather-label" class="visually-hidden">
+              Aktuellt väder
+            </h2>
+          </section>
 
           <!-- Forecast / history group -->
-          <div
+          <section
             class="forecast-history-container"
-            aria-label="Forecast and history"
+            aria-labelledby="forecast-label"
           >
-            <div
-              id="forecast"
-              class="column"
-              aria-label="Weather forecast"
-            ></div>
+            <h3 id="forecast-label" class="visually-hidden">Väderprognos</h3>
+          </section>
+
+          <section id="forecast" class="column" aria-labelledby="history-label">
+            <h3 id="history-label" class="visually-hidden">Sökhistorik</h3>
             <div id="history" class="column" aria-label="Search history"></div>
-          </div>
+          </section>
         </div>
       </section>
     </main>
