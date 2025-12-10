@@ -1,35 +1,49 @@
-<body>
-  <main>
-    <!-- Search / Input Area -->
-    <header>
-      <div class="input-wrapper">
-        <h2>Search for your city</h2>
-        <div class="input-container">
-          <input id="input" placeholder="Type a City" type="text" />
-          <button type="button" id="send-input">Skicka</button>
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Väderapp</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <script src="../js/main.js" type="module" defer></script>
+  </head>
+  <body>
+    <main>
+      <!-- Search / Input Area -->
+      <header>
+        <div class="input-wrapper">
+          <h2>Search for your city</h2>
+          <div class="input-container">
+            <input id="input" placeholder="Type a City" type="text" />
+            <button type="button" id="send-input">Skicka</button>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
 
-    <!-- Weather Content -->
-    <section class="info">
-      <div class="weather-container">
-        <!-- Current Weather -->
-        <div
-          id="main-weather"
-          class="column"
-          aria-label="Current weather"
-        ></div>
+      <!-- Weather Content -->
+      <section class="info">
+        <div class="weather-container">
+          <!-- Current Weather -->
+          <div
+            id="main-weather"
+            class="column"
+            aria-label="Current weather"
+          ></div>
 
-        <!-- Forecast / history group -->
-        <div
-          class="forecast-history-container"
-          aria-label="Forecast and history"
-        >
-          <div id="forecast" class="column" aria-label="Weather forecast"></div>
-          <div id="history" class="column" aria-label="Search history"></div>
+          <!-- Forecast / history group -->
+          <div
+            class="forecast-history-container"
+            aria-label="Forecast and history"
+          >
+            <div
+              id="forecast"
+              class="column"
+              aria-label="Weather forecast"
+            ></div>
+            <div id="history" class="column" aria-label="Search history"></div>
+          </div>
         </div>
-      </div>
-    </section>
-  </main>
-</body>
+      </section>
+    </main>
+  </body>
+</html>
