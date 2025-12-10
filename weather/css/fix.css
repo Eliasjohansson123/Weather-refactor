@@ -1,0 +1,159 @@
+:root {
+  margin: 0;
+  padding: 0;
+}
+body {
+  /* font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; */
+  font-family: Domine;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100vh;
+}
+
+:root {
+  --primary-color: rgb(233, 230, 230);
+  --secondary-color: rgb(22, 22, 22);
+  --accent-color: rgb(122, 120, 120);
+
+  --white-color: var(--primary-color);
+  --black-color: var(--secondary-color);
+  --light-gray: var(--accent-color);
+
+  --glass-bg: rgba(255, 255, 255, 0.01);
+  --glass-border: rgba(94, 94, 94, 0.5);
+  --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  --glass-blur: blur(6px);
+  --glass-radius: 16px;
+}
+
+/* Typography */
+
+h1,
+h2,
+h3 {
+  font-weight: 300;
+}
+
+li {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#forecast,
+.history-card {
+  background: rgba(255, 255, 255, 0.137);
+  border-radius: var(--glass-radius);
+}
+
+#forecast {
+  padding: 2rem;
+}
+
+.history-card {
+  height: 2rem;
+  width: 15rem;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  line-height: 1;
+  overflow: hidden;
+
+  gap: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 100px auto 0 auto;
+  align-content: space-around;
+  max-width: 60vw;
+  min-height: 60vh;
+  padding: 2rem;
+  color: var(--white-color);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: blur(5px);
+  background: var(--glass-bg);
+  border-radius: var(--glass-radius);
+  box-shadow: var(--glass-shadow);
+  border: 1px solid var(--glass-border);
+}
+
+.column {
+  flex: 1 1 calc(100% / 3);
+}
+
+.input-wrapper {
+  position: relative;
+  max-width: auto;
+  display: grid;
+  grid-template-columns: auto 50px;
+  grid-template-areas:
+    'search send'
+    'list list';
+  justify-content: center;
+}
+
+#input {
+  justify-self: stretch;
+  grid-area: search;
+}
+
+.drop-container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 20rem;
+  z-index: 1000;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.drop-down-element {
+  text-align: left;
+  padding: 6px 10px;
+}
+#send-input {
+  width: 50px;
+  grid-area: send;
+}
+
+.drop-container {
+  grid-area: list;
+  margin-top: 10px;
+  color: white;
+}
+
+/* background images */
+
+.sun {
+  background-image: url('/weather/images/sun.jpg');
+}
+.cloudy {
+  background-image: url('/weather/images/cloudy.jpg');
+}
+
+.foggy {
+  background-image: url('/weather/images/foggy.jpg');
+}
+
+.rain {
+  background-image: url('/weather/images/rain.jpg');
+}
+
+.snow {
+  background-image: url('/weather/images/snow.jpg');
+}
+
+.lightning {
+  background-image: url('/weather/images/lightning.jpg');
+}

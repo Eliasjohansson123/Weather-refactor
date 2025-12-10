@@ -166,7 +166,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /*   padding: 0.1rem 1rem; */
+  /* padding: 0.1rem 1rem; */
   /* margin: 1rem 0; */
   max-width: 15rem;
   /*   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); */
@@ -231,8 +231,6 @@ p {
     border-radius: 12px;
   }
 }
-
-/* background images */
 
 .sun {
   background-image: url('/weather/images/sun.jpg');
