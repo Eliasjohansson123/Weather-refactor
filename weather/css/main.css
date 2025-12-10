@@ -1,11 +1,19 @@
-:root {
-  margin: 0;
-  padding: 0;
-}
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300&display=swap");
+
 body {
   background-image: url("../images/images/lightning.jpg");
   background-size: cover;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--white-color);
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
 }
 
 :root {
@@ -18,14 +26,164 @@ body {
   --light-gray: var(--accent-color);
 
   --glass-bg: rgba(255, 255, 255, 0.01);
+  --glass-bg-light: rgba(255, 255, 255, 0.22);
+  --glass-bg-dark: rgba(24, 22, 22, 0.11);
   --glass-border: rgba(94, 94, 94, 0.5);
   --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
   --glass-blur: blur(6px);
-  --glass-radius: 16px;
+  --glass-radius: 20px;
 }
 
 /* Typography */
 
+h1,
+h2,
+h3,
+p {
+  font-weight: 300;
+}
+
+p {
+  font-size: 1rem;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul > li {
+  background: var(--glass-bg-light);
+  border-bottom: 1px solid var(--accent-color);
+  color: var(--black-color);
+  padding: 0.5rem 1rem;
+}
+
+/* Layout */
+/* ---- General ----- */
+
+section {
+  padding: 4rem 10rem;
+}
+
+.column {
+  padding: 1rem;
+}
+
+/* ---- Header & Input ----- */
+
+header {
+  display: flex;
+  justify-content: center;
+}
+
+.drop-container {
+  position: absolute;
+  top: 10%;
+  z-index: 1000;
+}
+
+/* ---- Forecast / history group ----- */
+
+.info {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: blur(5px);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  max-width: 70rem;
+  min-height: 60vh;
+  margin: 5rem auto;
+}
+
+.weather-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.forecast-history-container {
+  margin: 4rem 0;
+}
+
+#forecast {
+  background: var(--glass-bg-dark);
+  border-radius: var(--glass-radius);
+  backdrop-filter: blur(25px);
+}
+
+#forecast {
+  min-width: 35em;
+  max-height: 25rem;
+  margin: 0;
+  padding: 1rem;
+}
+
+.forecast-box {
+  border-bottom: 1px solid var(--light-gray);
+}
+
+#history {
+  padding: 1rem;
+  background: var(--glass-bg-dark);
+  border-radius: var(--glass-radius);
+  backdrop-filter: blur(25px);
+  margin: 2rem 0;
+  padding: 0.5rem;
+}
+
+.history-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /*   padding: 0.1rem 1rem; */
+  /* margin: 1rem 0; */
+  max-width: 15rem;
+  /*   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); */
+  /*   transition: transform 0.15s ease, box-shadow 0.15s ease; */
+}
+
+/* .history-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+} */
+
+@media (max-width: 900px) {
+  .weather-container {
+    min-width: 70vw;
+    padding: 1.5rem;
+  }
+
+  .info {
+    flex-direction: column;
+  }
+
+  #forecast,
+  .history {
+    max-width: 100%;
+  }
+}
+
+/* mobile */
+@media (max-width: 600px) {
+  .info {
+    padding: 1rem;
+  }
+
+  .weather-container {
+    min-width: 100%;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 12px;
+  }
+}
+
+/* 
 h1,
 h2,
 h3 {
@@ -54,7 +212,6 @@ li {
   font-size: 1rem;
   line-height: 1;
   overflow: hidden;
-
   gap: 0.5rem;
   display: flex;
   align-items: center;
@@ -127,3 +284,4 @@ li {
   margin-top: 10px;
   color: white;
 }
+ */
