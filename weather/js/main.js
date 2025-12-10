@@ -6,6 +6,7 @@ import { makeDropDown } from "./functions/dropDown/dropdown.js";
 import { Build } from "./classes/build.js";
 import { History } from "./classes/History.js";
 import { getCity, getWeather } from "./services/newApi.js";
+import { getUserLocation } from "./functions/location/userLocation.js";
 
 
 const mainTag = document.querySelector("main");
