@@ -1,5 +1,4 @@
-
-import { getCity, getWeather } from "../services/newApi.js";
+import { getCity, getWeather } from '../services/newApi.js';
 import { weatherEmojis } from '../services/weathercodes.js';
 import { setWeatherBackground } from '../functions/dynamicBackground.js';
 // import { getCity, getWeather } from "../services/oldapi.js";
@@ -31,10 +30,7 @@ export class City {
     // insert the dynamic background here
     const weatherCode = this.weatherNow.weather_code;
     setWeatherBackground(weatherCode);
-
-
   }
-
 
   buildForecast(parent) {
     parent.innerHTML = '';
@@ -63,6 +59,7 @@ export class City {
     }
     // DOM-Manip
   }
+
   buildMainWeather(parent) {
     parent.innerHTML = `
         <h1>${this.fetchedCity.name}</h1>
