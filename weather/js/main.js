@@ -19,60 +19,57 @@ const sendButtonEl = document.querySelector("#send-input");
 
 let historyList = new History(historyEl);
 
+textInputEl.addEventListener("input", async () => {
+  if (!textInputEl.value.trim()) return;
 
+  const dropDown = await makeDropDown(textInputEl.value);
 
-sendButtonEl.addEventListener("click", async () => {
+  // dropDown.element.children ger Key:value par där key är ordningen av barnen i containern.
+  // Index kopierar key och skickas till city-instansieringen.
+  dropDown.element.addEventListener("click", async (event) => {
+    let index = findIndexOfDropItem(event);
+    await runSearch(index);
 
-    const dropDown = await makeDropDown(textInputEl.value);
-    
-    // dropDown.element.children ger Key:value par där key är ordningen av barnen i containern.
-    // Index kopierar key och skickas till city-instansieringen.
-    dropDown.element.addEventListener("click", async event => {
-        let index = findIndexOfDropItem(event);
-        const city = new City(handleText(textInputEl.value), index);
-        await city.fetchCity();
+    dropDown.element.remove();
+  });
 
-        city.buildMainWeather(mainWeatherEl);
-        city.buildForecast(forecastEl);
-        historyList.cityListAdd(city);
-
-        //console.log("HistoryList", historyList.list);
-        //historyListHandler(history, cityHistoryList, city);
-    }); /*async (e) => {
-        for(let key in dropDown.element.children){
-            if(dropDown.element.children[key] == e.target){
-                console.log("key:", key);
-                index = key;
-            }
-        }
-
-        const city = new City(handleText(input.value), index);
-        await city.fetchCity();
-
-        city.buildMainWeather(mainWeather);
-        city.buildForecast(forecast);
-        historyListHandler(history, cityHistoryList, city);
-        
-    });*/
-
-    inputWrapperEl.insertBefore(dropDown.element, inputWrapperEl.firstChild);
+  inputWrapperEl.insertBefore(dropDown.element, inputWrapperEl.firstChild);
 });
-// function findIndexOfDropItem(data, event){
-//     console.log(data.results);
-//     for(let i = 0; i < data.results.length;i++){
-//         if(i == Object.keys(event.target)){
-//             console.log("target: ", event.target);
-//             return i;
-//         }
-//     }
-//     return 0;
-// }
-function findIndexOfDropItem(event) {
-    const children = [...event.target.parentElement.children];
-    console.log(children);
-    return children.indexOf(event.target);
+
+textInputEl.addEventListener("keydown", async (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+
+    //default to first search result
+    await runSearch(0);
+
+    textInputEl.value = "";
+  }
+});
+
+sendButtonEl.addEventListener("click", async (e) => {
+  e.preventDefault();
+  await runSearch(0);
+
+  textInputEl.value = "";
+});
+
+async function runSearch(index) {
+  if (!textInputEl.value.trim()) return;
+
+  const city = new City(handleText(textInputEl.value), index);
+  await city.fetchCity();
+
+  city.buildMainWeather(mainWeatherEl);
+  city.buildForecast(forecastEl);
+  historyList.cityListAdd(city);
 }
-//      Testing
+
+function findIndexOfDropItem(event) {
+  const children = [...event.target.parentElement.children];
+  console.log(children);
+  return children.indexOf(event.target);
+}
 
 const sundsvall = await getCity("Sundsvall");
 const weather = await getWeather(sundsvall.lat, sundsvall.lon);

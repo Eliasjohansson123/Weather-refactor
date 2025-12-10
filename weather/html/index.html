@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/main.css" />
     <script src="../js/main.js" type="module" defer></script>
-</head>
-<body>
-    <center><span class="input-wrapper">
-        <input id="input" placeholder="Type a City" type="text"><button id="send-input">Skicka</button>
-    </span></center>
-    
+  </head>
+  <body>
+    <span class="input-wrapper">
+      <input id="input" placeholder="Type a City" type="text" />
+      <button type="button" id="send-input">Skicka</button>
+    </span>
+
     <main>
-        <span class="info">
-            <section id="main-weather" class="column">
-
-            </section>
-            <section id="forecast" class="column">
-
-            </section>
-            <section id="history" class="column">
-
-            </section>
-        </span>
+      <span class="info">
+        <section id="main-weather" class="column"></section>
+        <div class="forecast-history-container">
+          <section id="forecast" class="column"></section>
+          <section id="history" class="column"></section>
+        </div>
+      </span>
     </main>
-</body>
+  </body>
 </html>

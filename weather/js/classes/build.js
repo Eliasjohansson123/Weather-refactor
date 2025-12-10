@@ -18,7 +18,7 @@ export class Build{
         <article>
             <span class = "curr-temp-wrapper">${this.weatherNow.temperature_2m} C</span>
             <span class= "curr-extra-info">
-                Feels Like: ${this.weatherNow.apparent_temperature} C<br>
+                Feels ohhh Like: ${this.weatherNow.apparent_temperature} C<br>
                 Wind Speed: ${this.weatherNow.wind_speed_10m} m/s<br>
                 Humidity: ${this.weatherNow.relative_humidity_2m} %
             </span>
@@ -36,7 +36,7 @@ export class Build{
             
             forecastText.textContent = `
             ${this.futureWeather.time[i]}
-            temperatures: 
+            high:
             ${this.futureWeather.temperature_2m_max[i]}
             - 
             ${this.futureWeather.temperature_2m_min[i]}

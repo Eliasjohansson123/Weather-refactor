@@ -9,7 +9,7 @@ export async function makeDropDown(cityStr) {
     }
     container.remove();
   }
-  const dropContainer = document.createElement("ol");
+  const dropContainer = document.createElement("ul");
   dropContainer.classList.add("drop-container");
   const drop = await getCity(cityStr);
 
