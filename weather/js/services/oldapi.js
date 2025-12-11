@@ -33,6 +33,7 @@ export async function getWeather(lat, lon) {
     const res = await fetch(url);
     if (!res.ok) throw new Error('Weather fetch failed');
     const data = await res.json();
+    console.log(data);
     return data;
   } catch (error) {
     console.log(error.message);

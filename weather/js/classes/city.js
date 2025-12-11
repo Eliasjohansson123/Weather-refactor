@@ -22,7 +22,7 @@ export class City {
     this.cityName = this.fetchedCity.name;
     this.lat = city.results[this.cityIndex].latitude;
     this.lon = city.results[this.cityIndex].longitude;
-
+    console.log(this.lat);
     const weather = await getWeather(this.lat, this.lon);
     console.log('weather:', weather);
     console.log('daily:', weather.daily);

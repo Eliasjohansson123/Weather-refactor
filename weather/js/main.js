@@ -37,10 +37,10 @@ textInputEl.addEventListener(
     if (!dropDown || !dropDown.element) return;
 
     // Visa dropdown
-    inputWrapperEl.insertBefore(dropDown.element, inputWrapperEl.firstChild);
+    inputWrapperEl.appendChild(dropDown.element);
 
-    // Lyssna på klick i dropdownen
     dropDown.element.addEventListener('click', async (event) => {
+      event.preventDefault();
       let index = findIndexOfDropItem(event);
 
       await runSearch(index);
@@ -85,6 +85,9 @@ function findIndexOfDropItem(event) {
   return children.indexOf(event.target);
 }
 
-const sundsvall = await getCity('Sundsvall');
-const weather = await getWeather(sundsvall.lat, sundsvall.lon);
-console.log(sundsvall);
+// const sundsvall = await getCity('Sundsvall');
+// const weather = await getWeather(
+//   sundsvall.results[0].latitude,
+//   sundsvall.results[0].longitude
+// );
+// console.log(weather);
