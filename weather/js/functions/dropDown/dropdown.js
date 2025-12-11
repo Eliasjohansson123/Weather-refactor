@@ -2,8 +2,6 @@
 import { getCity } from '../../services/oldapi.js';
 
 export async function makeDropDown(cityStr) {
-  console.log('makeDropDown input:', cityStr);
-
   const container = document.querySelector('.drop-container');
   if (container != undefined) {
     while (container.firstChild) {
