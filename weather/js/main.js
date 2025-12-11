@@ -2,7 +2,7 @@ import { City } from './classes/city.js';
 import { handleText } from './services/inputs.js';
 import { historyListHandler } from './functions/HistoryList/historyListHandler.js';
 import { getCity, getWeather } from './services/oldapi.js';
-import { makeDropDown } from './functions/dropDown/dropdown.js';
+import { makeDropDown, debounce } from './functions/dropDown/dropdown.js';
 import { Build } from './classes/build.js';
 import { History } from './classes/History.js';
 //import { getCity, getWeather } from "./services/newApi.js";
@@ -18,22 +18,37 @@ const sendButtonEl = document.querySelector('#send-input');
 
 let historyList = new History(historyEl);
 
-textInputEl.addEventListener('input', async () => {
-  if (!textInputEl.value.trim()) return;
+textInputEl.addEventListener(
+  'input',
+  debounce(async () => {
+    const query = textInputEl.value.trim();
 
-  const dropDown = await makeDropDown(textInputEl.value);
+    // Ta bort dropdown om input är tom
+    if (!query) {
+      const old = document.querySelector('.drop-container');
+      if (old) old.remove();
+      return;
+    }
 
-  // dropDown.element.children ger Key:value par där key är ordningen av barnen i containern.
-  // Index kopierar key och skickas till city-instansieringen.
-  dropDown.element.addEventListener('click', async (event) => {
-    let index = findIndexOfDropItem(event);
-    await runSearch(index);
+    // Hämta dropdown-data
+    const dropDown = await makeDropDown(query);
 
-    dropDown.element.remove();
-  });
+    // Om inga resultat: stoppa här
+    if (!dropDown || !dropDown.element) return;
 
-  inputWrapperEl.insertBefore(dropDown.element, inputWrapperEl.firstChild);
-});
+    // Visa dropdown
+    inputWrapperEl.insertBefore(dropDown.element, inputWrapperEl.firstChild);
+
+    // Lyssna på klick i dropdownen
+    dropDown.element.addEventListener('click', async (event) => {
+      let index = findIndexOfDropItem(event);
+
+      await runSearch(index);
+
+      dropDown.element.remove();
+    });
+  }, 300)
+);
 
 textInputEl.addEventListener('keydown', async (e) => {
   if (e.key === 'Enter') {
