@@ -1,10 +1,10 @@
 export async function getCity(string) {
-  if (!string) throw new Error("no input detected");
+  if (!string) throw new Error('no input detected');
   string = string.toLowerCase().trim();
   try {
     const url = `http://kontoret.onvo.se:10480/GetCities`;
     const response = await fetch(url);
-    if (!response.ok) console.log("faulty request");
+    if (!response.ok) console.log('faulty request');
     const data = await response.json();
 
     // console.log(data);
@@ -25,26 +25,27 @@ export async function getCity(string) {
         {
           name: city[0].name,
           admin1: city[0].name,
-          country: "Sweden",
+          country: 'Sweden',
           latitude: city[0].latitude,
           longitude: city[0].longitude,
         },
       ],
     };
   } catch (error) {
-    console.log("error: ", error.message);
+    console.log('error: ', error.message);
   }
 }
 
 export async function getWeather(lat, lon) {
   if (!lat || !lon) {
-    throw new Error("bad input");
+    throw new Error('bad input');
   }
   try {
     const url = `http://kontoret.onvo.se:10480/GetWeather?lat=${lat}&lon=${lon}`;
     const response = await fetch(url);
-    if (!response.ok) console.log("faulty request");
+    if (!response.ok) console.log('faulty request');
     const data = await response.json();
+    console.log(data);
     return data;
   } catch (error) {
     console.log(error.message);
