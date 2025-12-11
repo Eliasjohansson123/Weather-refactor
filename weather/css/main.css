@@ -54,14 +54,15 @@ ul {
   padding: 0;
   margin: 0;
 }
-
+li {
+  margin-bottom: 10px;
+}
 ul > li {
   background: var(--glass-bg-light);
   border-bottom: 1px solid var(--accent-color);
   color: var(--black-color);
-  padding: 0.5rem 1rem;
+  border-radius: 5px;
 }
-
 /* Layout */
 /* ---- General ----- */
 
@@ -86,10 +87,21 @@ header {
   position: absolute;
   top: 14%;
   z-index: 1000;
+  width: 355px;
 }
 .drop-down-element {
-  margin-bottom: 5px;
-  border-radius: 5px;
+  background: transparent;
+  border-bottom: 1px solid var(--accent-color);
+  color: var(--black-color);
+  padding: 0.5rem 1rem;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  padding: 1rem 0.5rem;
+  font-size: 15px;
+}
+.drop-down-element:hover {
+  background-color: var(--glass-bg-dark);
 }
 .input-container {
   display: flex;
@@ -98,6 +110,9 @@ header {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+}
+.current-weather-text {
+  font-size: 20px;
 }
 
 /* ---- Forecast / history group ----- */
@@ -177,9 +192,11 @@ header {
   min-width: 44px;
   border-radius: 5px;
   border: none;
+  cursor: pointer;
 }
 #send-input:focus,
-#input:focus {
+#input:focus,
+.drop-down-element:focus {
   outline: 3px solid #005fcc;
   outline-offset: 3px;
 }
