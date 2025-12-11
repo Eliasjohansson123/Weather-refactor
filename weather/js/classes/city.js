@@ -1,7 +1,7 @@
-import { getCity, getWeather } from '../services/newApi.js';
+// import { getCity, getWeather } from '../services/newApi.js';
 import { weatherEmojis } from '../services/weathercodes.js';
 import { setWeatherBackground } from '../functions/dynamicBackground.js';
-// import { getCity, getWeather } from "../services/oldapi.js";
+import { getCity, getWeather } from '../services/oldapi.js';
 
 export class City {
   // cityName är stadsnamnet sim skickas in till getCity API-call, CityIndex är vilket index i City som vi vill ha
@@ -24,6 +24,9 @@ export class City {
     this.lon = city.results[this.cityIndex].longitude;
 
     const weather = await getWeather(this.lat, this.lon);
+    console.log('weather:', weather);
+    console.log('daily:', weather.daily);
+
     this.weatherNow = weather.current;
     this.futureWeather = weather.daily;
 
@@ -33,6 +36,8 @@ export class City {
   }
 
   buildForecast(parent) {
+    console.log('futureWeather:', this.futureWeather);
+
     parent.innerHTML = '';
     for (let i = 1; i < 7; i++) {
       const cont = document.createElement('div');
