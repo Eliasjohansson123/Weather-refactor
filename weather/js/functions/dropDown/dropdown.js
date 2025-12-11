@@ -16,7 +16,6 @@ export async function makeDropDown(cityStr) {
   const drop = await getCity(cityStr);
 
   if (!drop || !Array.isArray(drop.results)) {
-    console.warn('Inga resultat från API');
     return { element: null, cityData: null };
   }
   drop.results.slice(0, 5).forEach((el) => {
