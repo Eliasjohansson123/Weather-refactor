@@ -63,6 +63,7 @@ async function runSearch(index) {
   historyList.cityListAdd(city);
 }
 
+//determine position of clicked item
 function findIndexOfDropItem(event) {
   const children = [...event.target.parentElement.children];
   console.log(children);
