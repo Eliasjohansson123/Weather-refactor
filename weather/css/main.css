@@ -10,7 +10,7 @@ body {
   color: var(--white-color);
   box-sizing: border-box;
   margin: 0;
-  padding: 0 100px;
+  padding: 0 200px;
 }
 
 html,
@@ -132,6 +132,7 @@ header {
 
 .info {
   display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
   padding: 2rem;
   backdrop-filter: var(--glass-blur);
@@ -139,6 +140,8 @@ header {
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: 1em;
+  max-width: 80em;
+  min-width: auto;
   min-height: 60vh;
   margin: 5rem auto;
   background: rgba(97, 98, 104, 0.2);
@@ -148,7 +151,7 @@ header {
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   width: 100%;
 }
 
@@ -160,10 +163,9 @@ header {
   background: var(--glass-bg-dark);
   border-radius: var(--glass-radius);
   backdrop-filter: blur(25px);
-
+  min-width: 40px;
   max-height: 25rem;
   margin: 0;
-  padding: 1rem 5rem;
 }
 
 .forecast-box {
@@ -250,8 +252,14 @@ header {
 
 /* mobile */
 @media (max-width: 600px) {
+  body {
+    padding: 50px;
+  }
   .info {
     padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .weather-container {
