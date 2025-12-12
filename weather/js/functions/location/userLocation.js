@@ -24,7 +24,7 @@ async function showWeatherForUser() {
     currentWeatherText.classList.add('current-weather-text');
     currentWeatherText.textContent = `${city.results[0].name} Temp: ${weather.current.apparent_temperature}°C`;
   } catch (error) {
-    console.error('Kunde inte hämta position eller väder:', err);
+    console.error('Kunde inte hämta position eller väder:', error);
   }
 }
 

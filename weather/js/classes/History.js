@@ -59,7 +59,7 @@ export class History {
       p_1.textContent = `${el.fetchedCity.country}`;
       p_2.textContent = `${el.weatherNow.temperature_2m}`;
 
-      historyCard.append(button, h3, p_1, p_2);
+      historyCard.append(h3, p_1, p_2, button);
       this.parent.append(historyCard);
       //parent.insertBefore(historyCard, parent.firstChild);
     });

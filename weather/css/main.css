@@ -3,11 +3,14 @@
 body {
   background-image: url('../images/lightning.jpg');
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: var(--white-color);
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
+  padding: 0 100px;
 }
 
 html,
@@ -16,7 +19,6 @@ body {
   overflow-x: hidden;
 }
 body {
-  padding: 0 100px;
 }
 
 :root {
@@ -40,6 +42,13 @@ body {
 }
 
 /* Typography */
+h1 {
+  font-size: 3em;
+}
+h2 {
+  font-size: 2em;
+  margin-bottom: 2em;
+}
 
 h1,
 h2,
@@ -49,7 +58,8 @@ p {
 }
 
 p {
-  font-size: 1rem;
+  font-size: 1.1rem;
+  padding: 0.1rem;
 }
 
 ul {
@@ -70,7 +80,7 @@ ul > li {
 /* ---- General ----- */
 
 section {
-  padding: 4rem 10rem;
+  /* padding: 4rem 10rem; */
 }
 
 .column {
@@ -88,7 +98,7 @@ header {
 
 .drop-container {
   position: absolute;
-  top: 14%;
+  top: 18%;
   z-index: 1000;
   width: 355px;
 }
@@ -128,7 +138,7 @@ header {
   -webkit-backdrop-filter: blur(5px);
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
-
+  border-radius: 1em;
   min-height: 60vh;
   margin: 5rem auto;
   background: rgba(97, 98, 104, 0.2);
@@ -136,31 +146,34 @@ header {
 
 .weather-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: flex-start;
   flex-wrap: nowrap;
   width: 100%;
 }
 
 .forecast-history-container {
-  margin: 4rem 0;
+  /* margin: 4rem 0; */
 }
 
 #forecast {
   background: var(--glass-bg-dark);
   border-radius: var(--glass-radius);
   backdrop-filter: blur(25px);
-  min-width: 35em;
+
   max-height: 25rem;
   margin: 0;
-  padding: 1rem;
+  padding: 1rem 5rem;
 }
 
 .forecast-box {
   border-bottom: 1px solid var(--light-gray);
+  margin: 1rem;
 }
 
 #history {
+  display: flex;
+  flex-direction: column;
   padding: 1rem;
   background: var(--glass-bg-dark);
   border-radius: var(--glass-radius);
@@ -176,10 +189,10 @@ header {
 .history-card {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   /* padding: 0.1rem 1rem; */
   /* margin: 1rem 0; */
-  max-width: 15rem;
+
   /*   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); */
   /*   transition: transform 0.15s ease, box-shadow 0.15s ease; */
 }
@@ -210,9 +223,13 @@ header {
   border-radius: 5px;
   border: none;
 }
-p {
-  line-height: 1.6;
-  margin-bottom: 1.2rem;
+.delete-history {
+  border-radius: 50%;
+  padding: 2px 5px;
+  border: 2px solid var(--accent-color);
+}
+#city-search-label {
+  margin: 1em 0;
 }
 
 @media (max-width: 900px) {
