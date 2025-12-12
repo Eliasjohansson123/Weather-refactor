@@ -16,16 +16,14 @@ export class City {
   }
   async fetchCity() {
     const city = await getCity(this.cityName);
-    console.log('fetching city...', city);
+
     this.fetchedCity = city.results[this.cityIndex];
 
     this.cityName = this.fetchedCity.name;
     this.lat = city.results[this.cityIndex].latitude;
     this.lon = city.results[this.cityIndex].longitude;
-    console.log(this.lat);
+
     const weather = await getWeather(this.lat, this.lon);
-    console.log('weather:', weather);
-    console.log('daily:', weather.daily);
 
     this.weatherNow = weather.current;
     this.futureWeather = weather.daily;
@@ -36,8 +34,6 @@ export class City {
   }
 
   buildForecast(parent) {
-    console.log('futureWeather:', this.futureWeather);
-
     parent.innerHTML = '';
     for (let i = 1; i < 7; i++) {
       const cont = document.createElement('div');

@@ -23,20 +23,16 @@ textInputEl.addEventListener(
   debounce(async () => {
     const query = textInputEl.value.trim();
 
-    // Ta bort dropdown om input är tom
     if (!query) {
       const old = document.querySelector('.drop-container');
       if (old) old.remove();
       return;
     }
 
-    // Hämta dropdown-data
     const dropDown = await makeDropDown(query);
 
-    // Om inga resultat: stoppa här
     if (!dropDown || !dropDown.element) return;
 
-    // Visa dropdown
     inputWrapperEl.appendChild(dropDown.element);
 
     dropDown.element.addEventListener('click', async (event) => {
@@ -54,7 +50,6 @@ textInputEl.addEventListener('keydown', async (e) => {
   if (e.key === 'Enter') {
     e.preventDefault();
 
-    //default to first search result
     await runSearch(0);
 
     textInputEl.value = '';
@@ -81,7 +76,7 @@ async function runSearch(index) {
 
 function findIndexOfDropItem(event) {
   const children = [...event.target.parentElement.children];
-  console.log(children);
+
   return children.indexOf(event.target);
 }
 
@@ -90,4 +85,3 @@ function findIndexOfDropItem(event) {
 //   sundsvall.results[0].latitude,
 //   sundsvall.results[0].longitude
 // );
-// console.log(weather);

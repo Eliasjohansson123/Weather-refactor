@@ -1,18 +1,15 @@
-export class Build{
-
-    constructor(city){
-        this.city = city.fetchedCity;
-        this.weatherNow = city.weatherNow;
-        this.futureWeather = city.futureWeather;
-        //bla bla bla osv
-    }
-    // Skicka parent som en DOM-Nod
-    buildHistory(parent){
-        // DOM-Manip
-
-    }
-    buildMainWeather(parent, stad){
-        parent.innerHTML = `
+export class Build {
+  constructor(city) {
+    this.city = city.fetchedCity;
+    this.weatherNow = city.weatherNow;
+    this.futureWeather = city.futureWeather;
+  }
+  // Skicka parent som en DOM-Nod
+  buildHistory(parent) {
+    // DOM-Manip
+  }
+  buildMainWeather(parent, stad) {
+    parent.innerHTML = `
         <h1>${this.city.name}</h1>
         <h2>${this.city.country}, ${this.city.admin1}</h2>
         <article>
@@ -24,31 +21,31 @@ export class Build{
             </span>
         </article>    
         `;
-        // DOM-Manip
-    }
-    buildForecast(parent){
-        parent.innerHTML = "";
-        for(let i = 1; i < 7;i++){
-            const cont = document.createElement('div');
-            cont.classList.add("forecast-box");
-            const forecastText = document.createElement("p");
-            forecastText.classList.add("forecast-text");
-            
-            forecastText.textContent = `
+    // DOM-Manip
+  }
+  buildForecast(parent) {
+    parent.innerHTML = '';
+    for (let i = 1; i < 7; i++) {
+      const cont = document.createElement('div');
+      cont.classList.add('forecast-box');
+      const forecastText = document.createElement('p');
+      forecastText.classList.add('forecast-text');
+
+      forecastText.textContent = `
             ${this.futureWeather.time[i]}
             high:
             ${this.futureWeather.temperature_2m_max[i]}
             - 
             ${this.futureWeather.temperature_2m_min[i]}
             `;
-            cont.appendChild(forecastText);
-            parent.appendChild(cont);
-        }
-        // DOM-Manip
+      cont.appendChild(forecastText);
+      parent.appendChild(cont);
     }
-    buildAll(historyParent, mainParent, forecastParent){
-        this.buildHistory(historyParent);
-        this.buildMainWeather(mainParent);
-        this.buildForecast(forecastParent);
-    }
+    // DOM-Manip
+  }
+  buildAll(historyParent, mainParent, forecastParent) {
+    this.buildHistory(historyParent);
+    this.buildMainWeather(mainParent);
+    this.buildForecast(forecastParent);
+  }
 }

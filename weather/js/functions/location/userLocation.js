@@ -23,10 +23,6 @@ async function showWeatherForUser() {
     currentWeather.appendChild(currentWeatherText);
     currentWeatherText.classList.add('current-weather-text');
     currentWeatherText.textContent = `${city.results[0].name} Temp: ${weather.current.apparent_temperature}°C`;
-
-    // document.querySelector(
-    //   '#main-weather'
-    // ).textContent = `${city.results[0].name} Temp: ${weather.current.apparent_temperature}°C`;
   } catch (error) {
     console.error('Kunde inte hämta position eller väder:', err);
   }

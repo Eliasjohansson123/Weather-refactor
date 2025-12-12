@@ -15,6 +15,9 @@ body {
   width: 100%;
   overflow-x: hidden;
 }
+body {
+  padding: 0 100px;
+}
 
 :root {
   --primary-color: rgb(233, 230, 230);
@@ -125,9 +128,10 @@ header {
   -webkit-backdrop-filter: blur(5px);
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
-  max-width: 70rem;
+
   min-height: 60vh;
   margin: 5rem auto;
+  background: rgba(97, 98, 104, 0.2);
 }
 
 .weather-container {
