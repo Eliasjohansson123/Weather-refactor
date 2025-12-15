@@ -10,7 +10,7 @@ body {
   color: var(--white-color);
   box-sizing: border-box;
   margin: 0;
-  padding: 0 200px;
+  /* padding: 0 200px; */
 }
 
 html,
@@ -96,9 +96,10 @@ header {
 
 .drop-container {
   position: absolute;
-  top: 18%;
+  top: 20%;
   z-index: 1000;
-  width: 355px;
+  width: 100%;
+  max-width: 35rem;
 }
 .drop-down-element {
   border-bottom: 1px solid var(--accent-color);
@@ -122,6 +123,14 @@ header {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+.input-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .current-weather-text {
   font-size: 20px;
@@ -143,6 +152,7 @@ header {
   min-width: auto;
   min-height: 60vh;
   margin: 4rem auto;
+  margin: 3rem auto;
   background: rgba(97, 98, 104, 0.2);
 }
 
@@ -217,8 +227,10 @@ header {
   outline-offset: 3px;
 }
 #input {
-  height: 3em;
-  width: 40rem;
+  height: 3.5rem;
+  width: 100%;
+  min-width: 10rem;
+  max-width: 35rem;
   border-radius: 5px;
   border: none;
 }
@@ -228,16 +240,15 @@ header {
   border: 2px solid var(--accent-color);
 }
 #city-search-label {
-  margin: 1em 0;
+  margin: 1rem 0;
 }
 
 @media (max-width: 900px) {
   body {
-    padding: 70px;
+    padding: 1px 20px;
   }
   .weather-container {
-    min-width: 70vw;
-    padding: 1.5rem;
+    display: flex;
   }
 
   .info {
@@ -248,13 +259,18 @@ header {
   .history {
     max-width: 100%;
   }
+  .drop-container {
+    position: absolute;
+    top: 20%;
+    z-index: 1000;
+    width: 100%;
+  }
 }
 
 /* mobile */
 @media (max-width: 600px) {
-  body,
-  main {
-    padding: 20px;
+  body {
+    padding: 1px 20px;
   }
   .info {
     padding: 1rem;
@@ -265,9 +281,20 @@ header {
 
   .weather-container {
     min-width: 100%;
+    max-width: 100%;
+    display: flex;
     flex-direction: column;
     align-items: center;
+
+    align-items: center;
+    /* padding: 1rem; */
     border-radius: 12px;
+  }
+  .drop-container {
+    position: absolute;
+    top: 27%;
+    z-index: 1000;
+    width: 100%;
   }
 }
 
