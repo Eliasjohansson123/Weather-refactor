@@ -25,9 +25,20 @@ async function showWeatherForUser() {
     currentWeather.appendChild(currentWeatherText);
     currentWeatherText.classList.add('current-weather-text');
 
-    currentWeatherText.textContent = `${city.results[0].name} Temp: ${weather.current.apparent_temperature}°C weatherCode: ${weather.current.weather_code}`;
-    //user location weather code 
+    // the page users see  before searching
+    currentWeatherText.innerHTML = ` <h1>${city.results[0].name}</h1>
+        <h2>${city.results[0].country}, ${city.results[0].admin1}</h2>
+        <article>
+            <span class = "curr-temp-wrapper">${weather.current.temperature_2m} °C</span>
+            <span class= "curr-extra-info">
+                Feels Like: ${weather.current.apparent_temperature} C<br>
+                Wind Speed: ${weather.current.wind_speed_10m} m/s<br>
+                Humidity: ${weather.current.relative_humidity_2m} %
+            </span>
+        </article> 
+    `;
 
+    //user location weather code 
     if(weather&& weather.current && typeof weather.current.weather_code === 'number'){
       setWeatherBackground(weather.current.weather_code);
     }
