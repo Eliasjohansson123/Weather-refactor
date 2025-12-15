@@ -50,10 +50,10 @@ export class City {
       });
 
       forecastText.textContent = `
-            ${formattedDate}
-            high: ${this.futureWeather.temperature_2m_max[i]}
-            low: ${this.futureWeather.temperature_2m_min[i]}
-            ${weatherEmojis[this.futureWeather.weather_code[i]]}
+            ${formattedDate} 
+             ${weatherEmojis[this.futureWeather.weather_code[i]]}
+            high: ${this.futureWeather.temperature_2m_max[i]}°C
+            low: ${this.futureWeather.temperature_2m_min[i]}°C
             `;
       cont.appendChild(forecastText);
       parent.appendChild(cont);
