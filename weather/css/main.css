@@ -219,10 +219,10 @@ header {
   outline-offset: 3px;
 }
 #input {
-  height: 42px;
+  height: 3.5rem;
   width: 100%;
-  min-width: 20rem;
-  max-width: 22rem;
+  min-width: 10rem;
+  max-width: 35rem;
   border-radius: 5px;
   border: none;
 }
@@ -237,10 +237,10 @@ header {
 
 @media (max-width: 900px) {
   body {
-    padding: 70px;
+    padding: 1px 60px;
   }
   .weather-container {
-    padding: 1.5rem;
+    display: flex;
   }
 
   .info {
@@ -257,7 +257,7 @@ header {
 @media (max-width: 600px) {
   body,
   main {
-    padding: 20px;
+    padding: 30px;
   }
   .info {
     padding: 1rem;
@@ -268,8 +268,12 @@ header {
 
   .weather-container {
     min-width: 100%;
+    max-width: 100%;
+    display: flex;
     flex-direction: column;
-    padding: 1rem;
+
+    align-items: center;
+    /* padding: 1rem; */
     border-radius: 12px;
   }
 }
