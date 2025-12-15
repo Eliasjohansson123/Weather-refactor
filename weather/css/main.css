@@ -96,9 +96,10 @@ header {
 
 .drop-container {
   position: absolute;
-  top: 18%;
+  top: 20%;
   z-index: 1000;
-  width: 355px;
+  width: 100%;
+  max-width: 35rem;
 }
 .drop-down-element {
   background: transparent;
@@ -121,9 +122,14 @@ header {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  width: 100%;
+  margin-bottom: 0.5rem;
 }
 .input-wrapper {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .current-weather-text {
   font-size: 20px;
@@ -251,6 +257,13 @@ header {
   .history {
     max-width: 100%;
   }
+  .drop-container {
+    position: absolute;
+    top: 20%;
+    z-index: 1000;
+    width: 100%;
+    max-width: 50%;
+  }
 }
 
 /* mobile */
@@ -275,6 +288,13 @@ header {
     align-items: center;
     /* padding: 1rem; */
     border-radius: 12px;
+  }
+  .drop-container {
+    position: absolute;
+    top: 27%;
+    z-index: 1000;
+    width: 100%;
+    max-width: 50%;
   }
 }
 
