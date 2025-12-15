@@ -34,7 +34,7 @@ export class City {
   }
 
   buildForecast(parent) {
-    parent.innerHTML = '';
+    parent.textContent = '';
     for (let i = 1; i < 7; i++) {
       const cont = document.createElement('div');
       cont.classList.add('forecast-box');
@@ -62,7 +62,7 @@ export class City {
   }
 
   buildMainWeather(parent) {
-    parent.innerHTML = `
+    parent.textContent = `
         <h1>${this.fetchedCity.name}</h1>
         <h2>${this.fetchedCity.country}, ${this.fetchedCity.admin1}</h2>
         <article>
