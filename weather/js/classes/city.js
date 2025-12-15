@@ -98,27 +98,4 @@ export class City {
         </article>    
         `;
   }
-
-  buildHistory(parent) {
-    const historyCard = document.createElement('article');
-    const button = document.createElement('button');
-    const h3 = document.createElement('h3');
-    const p_1 = document.createElement('p');
-    const p_2 = document.createElement('p');
-
-    button.addEventListener('click', () => {
-      historyCard.remove();
-    });
-
-    historyCard.classList.add('history-card');
-    button.classList.add('delete-history');
-
-    button.textContent = 'X';
-    h3.textContent = `${this.fetchedCity.name}`;
-    p_1.textContent = `${this.fetchedCity.country}`;
-    p_2.textContent = `${this.weatherNow.temperature_2m}`;
-
-    historyCard.append(button, h3, p_1, p_2);
-    parent.append(historyCard);
-  }
 }
