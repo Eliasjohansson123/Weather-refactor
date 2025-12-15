@@ -10,7 +10,7 @@ body {
   color: var(--white-color);
   box-sizing: border-box;
   margin: 0;
-  padding: 0 200px;
+  /* padding: 0 200px; */
 }
 
 html,
@@ -150,7 +150,7 @@ header {
   max-width: 80em;
   min-width: auto;
   min-height: 60vh;
-  margin: 5rem auto;
+  margin: 3rem auto;
   background: rgba(97, 98, 104, 0.2);
 }
 
@@ -238,12 +238,12 @@ header {
   border: 2px solid var(--accent-color);
 }
 #city-search-label {
-  margin: 1em 0;
+  margin: 1rem 0;
 }
 
 @media (max-width: 900px) {
   body {
-    padding: 1px 155px;
+    padding: 1px 20px;
   }
   .weather-container {
     display: flex;
@@ -268,9 +268,8 @@ header {
 
 /* mobile */
 @media (max-width: 600px) {
-  body,
-  main {
-    padding: 30px;
+  body {
+    padding: 1px 20px;
   }
   .info {
     padding: 1rem;
