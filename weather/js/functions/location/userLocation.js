@@ -1,4 +1,5 @@
 import { getWeather, getCity } from '../../services/oldapi.js';
+import { setWeatherBackground } from '../dynamicBackground.js';
 
 export async function getUserLocation() {
   const options = {
@@ -23,7 +24,15 @@ async function showWeatherForUser() {
 
     currentWeather.appendChild(currentWeatherText);
     currentWeatherText.classList.add('current-weather-text');
-    currentWeatherText.textContent = `${city.results[0].name} Temp: ${weather.current.apparent_temperature}°C`;
+
+    currentWeatherText.textContent = `${city.results[0].name} Temp: ${weather.current.apparent_temperature}°C weatherCode: ${weather.current.weather_code}`;
+    //user location weather code 
+
+    if(weather&& weather.current && typeof weather.current.weather_code === 'number'){
+      setWeatherBackground(weather.current.weather_code);
+    }
+
+    
   } catch (error) {
     console.error('Kunde inte hämta position eller väder:', error);
   }
