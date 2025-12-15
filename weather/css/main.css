@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300&display=swap');
 
 body {
-  background-image: url('../images/lightning.jpg');
+  /* background-image: url('../images/lightning.jpg'); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -142,7 +142,7 @@ header {
   max-width: 80em;
   min-width: auto;
   min-height: 60vh;
-  margin: 5rem auto;
+  margin: 4rem auto;
   background: rgba(97, 98, 104, 0.2);
 }
 
@@ -217,8 +217,8 @@ header {
   outline-offset: 3px;
 }
 #input {
-  height: 42px;
-  width: 22rem;
+  height: 3em;
+  width: 40rem;
   border-radius: 5px;
   border: none;
 }
@@ -266,7 +266,7 @@ header {
   .weather-container {
     min-width: 100%;
     flex-direction: column;
-    padding: 1rem;
+    align-items: center;
     border-radius: 12px;
   }
 }
