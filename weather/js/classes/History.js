@@ -10,13 +10,11 @@ export class History {
       this.list.some((c) => c.lat === city.lat) &&
       this.list.some((c) => c.lon === city.lon)
     ) {
-      //console.log("this element already exists");
     } else if (this.list.length >= 4) {
       //"replacing old element with new");
       this.list.pop();
       this.list.unshift(city);
     } else {
-      //console.log("adding new element");
       this.list.unshift(city);
     }
     this.buildCardsFromList();
@@ -26,7 +24,6 @@ export class History {
     this.buildCardsFromList();
   }
   removeCityFromList(cityToRemove) {
-    //console.log(cityToRemove);
     if (
       this.list.some((c) => c.lat === cityToRemove.lat) &&
       this.list.some((c) => c.lon === cityToRemove.lon)
@@ -43,26 +40,26 @@ export class History {
     }
 
     this.list.forEach((el) => {
-      const historyCard = document.createElement("article");
-      const button = document.createElement("button");
-      const h3 = document.createElement("h3");
-      const p_1 = document.createElement("p");
-      const p_2 = document.createElement("p");
+      const historyCard = document.createElement('article');
+      const button = document.createElement('button');
+      const h3 = document.createElement('h3');
+      const p_1 = document.createElement('p');
+      const p_2 = document.createElement('p');
 
-      button.addEventListener("click", () => {
+      button.addEventListener('click', () => {
         console.log(this);
         this.removeCityFromList(el);
       });
 
-      historyCard.classList.add("history-card");
-      button.classList.add("delete-history");
+      historyCard.classList.add('history-card');
+      button.classList.add('delete-history');
 
-      button.textContent = "X";
+      button.textContent = 'X';
       h3.textContent = `${el.fetchedCity.name}`;
       p_1.textContent = `${el.fetchedCity.country}`;
       p_2.textContent = `${el.weatherNow.temperature_2m}`;
 
-      historyCard.append(button, h3, p_1, p_2);
+      historyCard.append(h3, p_1, p_2, button);
       this.parent.append(historyCard);
       //parent.insertBefore(historyCard, parent.firstChild);
     });
