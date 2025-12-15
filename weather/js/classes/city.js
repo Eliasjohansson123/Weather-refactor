@@ -49,7 +49,7 @@ export class City {
         day: 'numeric',
       });
 
-      forecastText.textContent = `
+      forecastText.innerHTML = `
             ${formattedDate}
             high: ${this.futureWeather.temperature_2m_max[i]}
             low: ${this.futureWeather.temperature_2m_min[i]}
@@ -62,7 +62,7 @@ export class City {
   }
 
   buildMainWeather(parent) {
-    parent.textContent = `
+    parent.innerHTML = `
         <h1>${this.fetchedCity.name}</h1>
         <h2>${this.fetchedCity.country}, ${this.fetchedCity.admin1}</h2>
         <article>
