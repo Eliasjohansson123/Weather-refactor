@@ -38,7 +38,6 @@ textInputEl.addEventListener(
     dropDown.element.addEventListener('click', async (event) => {
       event.preventDefault();
       let index = findIndexOfDropItem(event);
-
       await runSearch(index);
 
       dropDown.element.remove();
@@ -76,7 +75,6 @@ async function runSearch(index) {
 
 function findIndexOfDropItem(event) {
   const children = [...event.target.parentElement.children];
-
   return children.indexOf(event.target);
 }
 

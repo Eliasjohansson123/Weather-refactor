@@ -20,12 +20,10 @@ export async function makeDropDown(cityStr) {
   }
   drop.results.slice(0, 5).forEach((el) => {
     const listElement = document.createElement('li');
-    const listButton = document.createElement('button');
-
-    listButton.classList.add('drop-down-element');
-    listButton.textContent = `${el.name}, ${el.admin1}, ${el.country}`;
-
-    listElement.appendChild(listButton);
+    
+    listElement.tabIndex = 0;
+    listElement.classList.add('drop-down-element');
+    listElement.textContent = `${el.name}, ${el.admin1}, ${el.country}`;
     dropContainer.append(listElement);
   });
   return { element: dropContainer, cityData: drop };
