@@ -15,11 +15,11 @@ export function historyListHandler(DOMParent, cities, city) {
   } else if (cities.length >= 5) {
     cities.pop();
     cities.unshift(city);
-    historyListBuilder(DOMParent, cities);
+    historyListBuilder(DOMParent);
     // historyListBuilder(DOMParent, cities);
   } else {
     cities.unshift(city);
-    historyListBuilder(DOMParent, cities);
+    historyListBuilder(DOMParent);
     // historyListBuilder(DOMParent, cities);
   }
 }
