@@ -38,11 +38,12 @@ textInputEl.addEventListener(
       event.preventDefault();
       let index = findIndexOfDropItem(event);
       await runSearch(index);
+      inputWrapperEl.removeChild(dropDown.element)
     });
-
+    
     dropDown.element.addEventListener('keydown', event => {
       if (event.key === 'Enter') event.target.click()
-    })
+      })
   }, 300)
 );
 
@@ -50,8 +51,8 @@ textInputEl.addEventListener('keydown', async (e) => {
   if (e.key === 'Enter') {
     e.preventDefault();
     await runSearch(0);
-    dropDown.element.remove()
     textInputEl.value = '';
+    inputWrapperEl.removeChild(document.querySelector(".drop-container"))
   }
 });
 
