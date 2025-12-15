@@ -18,8 +18,6 @@ body {
   width: 100%;
   overflow-x: hidden;
 }
-body {
-}
 
 :root {
   --primary-color: rgb(233, 230, 230);
@@ -163,8 +161,6 @@ header {
   background: var(--glass-bg-dark);
   border-radius: var(--glass-radius);
   backdrop-filter: blur(25px);
-  min-width: 40px;
-  max-height: 25rem;
   margin: 0;
 }
 
@@ -235,6 +231,9 @@ header {
 }
 
 @media (max-width: 900px) {
+  body {
+    padding: 70px;
+  }
   .weather-container {
     min-width: 70vw;
     padding: 1.5rem;
@@ -252,8 +251,9 @@ header {
 
 /* mobile */
 @media (max-width: 600px) {
-  body {
-    padding: 50px;
+  body,
+  main {
+    padding: 20px;
   }
   .info {
     padding: 1rem;
