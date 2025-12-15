@@ -14,7 +14,6 @@ const forecastEl = document.querySelector('#forecast');
 const historyEl = document.querySelector('#history');
 const textInputEl = document.querySelector('input');
 const inputWrapperEl = document.querySelector('.input-wrapper');
-const sendButtonEl = document.querySelector('#send-input');
 
 let historyList = new History(historyEl);
 
@@ -39,28 +38,23 @@ textInputEl.addEventListener(
       event.preventDefault();
       let index = findIndexOfDropItem(event);
       await runSearch(index);
-
-      dropDown.element.remove();
     });
+
+    dropDown.element.addEventListener('keydown', event => {
+      if (event.key === 'Enter') event.target.click()
+    })
   }, 300)
 );
 
 textInputEl.addEventListener('keydown', async (e) => {
   if (e.key === 'Enter') {
     e.preventDefault();
-
     await runSearch(0);
-
+    dropDown.element.remove()
     textInputEl.value = '';
   }
 });
 
-sendButtonEl.addEventListener('click', async (e) => {
-  e.preventDefault();
-  await runSearch(0);
-
-  textInputEl.value = '';
-});
 
 async function runSearch(index) {
   if (!textInputEl.value.trim()) return;
