@@ -58,6 +58,11 @@ textInputEl.addEventListener('keydown', async (e) => {
 
 sendButtonEl.addEventListener('click', async (e) => {
   e.preventDefault();
+  if(document.querySelector('.drop-container')){
+    console.log("remove dropdown")
+    document.querySelector('.drop-container').remove();
+  }
+
   await runSearch(0);
 
   textInputEl.value = '';
@@ -76,7 +81,6 @@ async function runSearch(index) {
 
 function findIndexOfDropItem(event) {
   const children = [...event.target.parentElement.children];
-
   return children.indexOf(event.target);
 }
 

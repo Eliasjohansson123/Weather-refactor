@@ -15,6 +15,7 @@ export async function getUserLocation() {
 async function showWeatherForUser() {
   try {
     const coords = await getUserLocation();
+    console.log(coords);
     const weather = await getWeather(coords.latitude, coords.longitude);
     const city = await getCity('Sundsvall');
     const currentWeatherText = document.createElement('p');
