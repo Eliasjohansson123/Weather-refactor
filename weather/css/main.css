@@ -237,7 +237,7 @@ header {
 
 @media (max-width: 900px) {
   body {
-    padding: 1px 60px;
+    padding: 1px 155px;
   }
   .weather-container {
     display: flex;
