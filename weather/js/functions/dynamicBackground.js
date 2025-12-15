@@ -1,3 +1,7 @@
+/**
+ * Maps weather codes from tAPI to CSS class names
+ */
+
 const codeMap = {
   sun: [0],
 
@@ -12,6 +16,11 @@ const codeMap = {
   lightning: [95, 96, 99],
 };
 
+/**Returns the css class name that matches teh weather code
+ *
+ * @param {number} code - Weather code from the API
+ * @returns {string|undefined} css class name for the weather
+ */
 function getWeatherClass(code) {
   for (const [className, codes] of Object.entries(codeMap)) {
     if (codes.includes(code)) {
@@ -19,7 +28,10 @@ function getWeatherClass(code) {
     }
   }
 }
-
+/** Updates the background image based on the current weahter
+ *
+ * @param {number} - weatherCode form API
+ */
 export function setWeatherBackground(weatherCode) {
   const body = document.body;
   const weatherClass = getWeatherClass(weatherCode);
