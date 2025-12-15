@@ -101,8 +101,9 @@ header {
   width: 355px;
 }
 .drop-down-element {
-  background: transparent;
   border-bottom: 1px solid var(--accent-color);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: blur(1px);
   color: var(--black-color);
   padding: 0.5rem 1rem;
   width: 100%;
@@ -112,7 +113,7 @@ header {
   font-size: 15px;
 }
 .drop-down-element:hover {
-  background-color: var(--glass-bg-dark);
+  background: var(--glass-bg-dark);
 }
 .input-container {
   display: flex;
