@@ -1,3 +1,8 @@
+/**
+ * Main application entry point.
+ * Handlers user input, search flow and UI updates
+ */
+
 import { City } from './classes/city.js';
 import { handleText } from './services/inputs.js';
 import { historyListHandler } from './functions/HistoryList/historyListHandler.js';
@@ -8,7 +13,6 @@ import { History } from './classes/History.js';
 //import { getCity, getWeather } from "./services/newApi.js";
 import { getUserLocation } from './functions/location/userLocation.js';
 
-const mainTag = document.querySelector('main');
 const mainWeatherEl = document.querySelector('#main-weather');
 const forecastEl = document.querySelector('#forecast');
 const historyEl = document.querySelector('#history');
@@ -57,6 +61,13 @@ textInputEl.addEventListener('keydown', async (e) => {
 });
 
 
+/**
+ * Runs a weather search based obn the current input value
+ * Updates the main weather view, forecast and history
+ * @param {numnber} index - index of the selected dropdown item
+ * @returns {promise<void>}
+ */
+
 async function runSearch(index) {
   if (!textInputEl.value.trim()) return;
 
@@ -68,6 +79,11 @@ async function runSearch(index) {
   historyList.cityListAdd(city);
 }
 
+/**
+ * Fins index of a clicked dropdown item
+ * @param {Event} event - click event from dropdown item
+ * @returns {number} - Index of the clicked element
+ */
 function findIndexOfDropItem(event) {
   const children = [...event.target.parentElement.children];
   return children.indexOf(event.target);

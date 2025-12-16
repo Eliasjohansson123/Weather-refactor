@@ -1,5 +1,12 @@
-export function handleText(inputString){
-    let str = inputString;
+/**
+ * returns string input unchanged
+ *
+ * @param {string} inputString - Input text
+ * @returns - Same text as input
+ */
 
-    return str; 
+export function handleText(inputString) {
+  let str = inputString;
+
+  return str;
 }
