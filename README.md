@@ -81,6 +81,12 @@ The application has been tested using both manual testing and unit tests.
 - On initial load, the app displays weather data for a default city (Sundsvall)
 - The project is not deployed and must be run locally
 
+## Future Improvements
+
+- Add automatic location detection to show weather data based on the user’s current location
+- Deploy the application online so it can be accessed without running it locally
+- Improve error handling and user feedback when API requests fail
+
 ## Credits
 
 - Weather and geocoding data provided by the Open-Meteo API
