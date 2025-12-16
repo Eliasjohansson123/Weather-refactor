@@ -67,8 +67,6 @@ The application has been tested using both manual testing and unit tests.
 
 ## API / Data Sources
 
-## API / Data Sources
-
 - **Open-Meteo Geocoding API**  
   Used to search for cities based on user input and retrieve location data such as latitude and longitude.
 
