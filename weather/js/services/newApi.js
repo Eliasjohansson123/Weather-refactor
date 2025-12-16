@@ -1,4 +1,9 @@
 /**
+ * @fileoverview Unused API helper functions
+ * Reference file only, not used on production
+ */
+
+/**
  *Fetches city data based on city name
  returns empty result if no city is found
 
