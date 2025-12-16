@@ -36,12 +36,52 @@ This is a fronend weather website where users can search for a city and view cur
 
 ## Testing
 
+The application has been tested using both manual testing and unit tests.
+
+### Manual Testing
+
+- Search for different cities and check that the weather updates as expected
+- Make sure the dropdown suggestions appear while typing
+- Select a city by clicking a suggestion or pressing Enter
+- Verify that the last four searches are saved and can be clicked again
+
+### Unit Testing
+
+- Jest is used to test small, isolated helper functions
+- The `debounce` function is tested to make sure it delays function execution correctly
+- The `handleText` function is tested to ensure it returns the input string as expected
+
 ## Project Structure
+
+## Project Structure
+
+- `css/` – Application styling
+- `html/` – HTML files
+- `js/` – JavaScript source code
+  - `classes/` – Core classes for data handling and UI
+  - `functions/` – UI-related and utility functions
+  - `services/` – API logic and data helpers
+  - `main.js` – Application entry point
+- `images/` – Static assets
+- `README.md` – Project documentation
 
 ## API / Data Sources
 
+## API / Data Sources
+
+- **Open-Meteo Geocoding API**  
+  Used to search for cities based on user input and retrieve location data such as latitude and longitude.
+
+- **Open-Meteo Weather API**  
+  Used to fetch current weather conditions and a 6-day weather forecast based on geographic coordinates.
+
 ## Known Issues / Limitations
 
-## Future Improvements
+- The application does not automatically detect the user’s location
+- On initial load, the app displays weather data for a default city (Sundsvall)
+- The project is not deployed and must be run locally
 
 ## Credits
+
+- Weather and geocoding data provided by the Open-Meteo API
+- Project developed as part of a school assignment
