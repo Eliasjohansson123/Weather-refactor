@@ -1,3 +1,12 @@
+/**
+ *
+ *
+ *
+ * @param {*} city - name of the city to search for
+ * @returns {Promise<Object|undefined>} Returns Geocoding response data, or undefined error
+ *
+ */
+
 export async function getCity(city) {
   const url = `https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=10&language=en&format=json`;
   try {
@@ -21,6 +30,15 @@ export async function getCity(city) {
 //     console.log(error.message);
 //   }
 // }
+
+/**
+ * Fetches current adn daily weather data for a location Using Open-Meteo
+ *
+ * @param {number} lat - latitude of location
+ * @param {number} lon - longitude of location
+ * @returns {Promise<Object|undefined>} weather data, or undeinfed on error
+ */
+
 export async function getWeather(lat, lon) {
   const url =
     `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
