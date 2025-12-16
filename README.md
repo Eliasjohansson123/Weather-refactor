@@ -53,8 +53,6 @@ The application has been tested using both manual testing and unit tests.
 
 ## Project Structure
 
-## Project Structure
-
 - `css/` – Application styling
 - `html/` – HTML files
 - `js/` – JavaScript source code
