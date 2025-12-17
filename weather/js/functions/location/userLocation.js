@@ -1,6 +1,7 @@
 import { getWeather, getCity } from '../../services/oldapi.js';
 import { setWeatherBackground } from '../dynamicBackground.js';
 
+// Hämtar användarens nuvarande position och returnerar koordinaterna som ett Promise.
 export async function getUserLocation() {
   const options = {
     timeout: 5000,
@@ -38,12 +39,14 @@ async function showWeatherForUser() {
         </article> 
     `;
 
-    //user location weather code 
-    if(weather&& weather.current && typeof weather.current.weather_code === 'number'){
+    //user location weather code
+    if (
+      weather &&
+      weather.current &&
+      typeof weather.current.weather_code === 'number'
+    ) {
       setWeatherBackground(weather.current.weather_code);
     }
-
-    
   } catch (error) {
     console.error('Kunde inte hämta position eller väder:', error);
   }
