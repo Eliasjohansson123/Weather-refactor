@@ -53,7 +53,7 @@ export class City {
    */
   buildForecast(parent) {
     parent.textContent = '';
-    for (let i = 1; i < 7; i++) {
+    for (let i = 1; i < 6; i++) {
       const cont = document.createElement('div');
       cont.classList.add('forecast-box');
       const forecastText = document.createElement('p');
@@ -70,8 +70,8 @@ export class City {
       forecastText.textContent = `
             ${formattedDate} 
              ${weatherEmojis[this.futureWeather.weather_code[i]]}
-            high: ${this.futureWeather.temperature_2m_max[i]}°C
-            low: ${this.futureWeather.temperature_2m_min[i]}°C
+            High: ${this.futureWeather.temperature_2m_max[i]}°C
+            Low: ${this.futureWeather.temperature_2m_min[i]}°C
             `;
       cont.appendChild(forecastText);
       parent.appendChild(cont);
@@ -85,17 +85,22 @@ export class City {
    * @param {HTMLElement} parent - DOM element where data will be displayed
    */
   buildMainWeather(parent) {
+    const code = this.weatherNow.weather_code;
+    const emoji = weatherEmojis[code] || '';
+
     parent.innerHTML = `
-        <h1>${this.fetchedCity.name}</h1>
-        <h2>${this.fetchedCity.country}, ${this.fetchedCity.admin1}</h2>
-        <article>
-            <span class = "curr-temp-wrapper">${this.weatherNow.temperature_2m}&#8451;</span>
-            <span class= "curr-extra-info">
-                Feels Like: ${this.weatherNow.apparent_temperature}&#8451;<br>
-                Wind Speed: ${this.weatherNow.wind_speed_10m} m/s<br>
-                Humidity: ${this.weatherNow.relative_humidity_2m}%
-            </span>
-        </article>    
-        `;
+    <article>
+   <span class="curr-temp-wrapper">
+  ${this.weatherNow.temperature_2m}&#8451;
+  <span class="weather-emoji">${emoji}</span>
+  </span>
+  <h2> ${this.fetchedCity.admin1}, ${this.fetchedCity.country}</h2>
+      <span class="curr-extra-info">
+        Feels Like: ${this.weatherNow.apparent_temperature}&#8451;<br>
+        Wind Speed: ${this.weatherNow.wind_speed_10m} m/s<br>
+        Humidity: ${this.weatherNow.relative_humidity_2m}%
+      </span>
+    </article>
+  `;
   }
 }

@@ -84,7 +84,7 @@ export class History {
       button.textContent = 'X';
       h3.textContent = `${el.fetchedCity.name}`;
       p_1.textContent = `${el.fetchedCity.country}`;
-      p_2.textContent = `${el.weatherNow.temperature_2m}`;
+      p_2.textContent = `${el.weatherNow.temperature_2m}°C`;
 
       historyCard.append(h3, p_1, p_2, button);
       this.parent.append(historyCard);
