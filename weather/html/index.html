@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Väderapp</title>
     <link rel="stylesheet" href="../css/main.css" />
     <script src="../js/main.js" type="module" defer></script>
   </head>
@@ -11,37 +11,53 @@
     <main>
       <!-- Search / Input Area -->
       <header>
-        <div class="input-wrapper">
-          <h2>Search for your city</h2>
+        <h2 id="city-search-label">Sök din stad</h2>
+        <form class="input-wrapper" aria-labelledby="city-search-label">
           <div class="input-container">
-            <input id="input" placeholder="Type a City" type="text" />
-            <button type="button" id="send-input">Skicka</button>
+            <label for="input" class="visually-hidden"
+              >Stad att söka efter</label
+            >
+            <input
+              id="input"
+              placeholder="Sök efter din stad"
+              type="text"
+              autocomplete="off"
+            />
           </div>
-        </div>
+        </form>
       </header>
 
       <!-- Weather Content -->
       <section class="info">
         <div class="weather-container">
           <!-- Current Weather -->
-          <div
+
+          <section
             id="main-weather"
             class="column"
-            aria-label="Current weather"
-          ></div>
+            aria-labelledby="Current weather"
+          >
+            <h2 id="current-weather-label" class="visually-hidden">
+              Aktuellt väder
+            </h2>
+          </section>
 
           <!-- Forecast / history group -->
-          <div
+          <section
             class="forecast-history-container"
-            aria-label="Forecast and history"
+            aria-labelledby="forecast-label"
           >
-            <div
+            <section
               id="forecast"
               class="column"
-              aria-label="Weather forecast"
-            ></div>
+              aria-labelledby="history-label"
+            >
+              <h3 id="forecast-label" class="visually-hidden">Väderprognos</h3>
+            </section>
+
+            <h3 id="history-label" class="visually-hidden">Sökhistorik</h3>
             <div id="history" class="column" aria-label="Search history"></div>
-          </div>
+          </section>
         </div>
       </section>
     </main>

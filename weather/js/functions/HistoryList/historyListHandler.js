@@ -1,24 +1,31 @@
-import { historyListBuilder } from "./historyListBuilder.js";
+import { historyListBuilder } from './historyListBuilder.js';
 
-// kollar på listan med cities och kör byggfuntionen i city om 
-// den godtas till historiken.
+/**
+ * Handles updates to the citry history list
+ * makes sure there are no duplicates, list size limit andreloads UI
+ * @param {HTMLElement} DOMParent - history card container
+ * @param {City[]} cities - array with stored City instances
+ * @param {City} city - new city instance
+ */
 
-// DOMParent skickas som en DOM-nod som historyCard appendas till. cities är en lista med City-instanser, 
-// city är den nyaste instansen av City.
+export function historyListHandler(DOMParent, cities, city) {
+  // ignore city if it is already in history (based on coords)
+  if (
+    cities.some((c) => c.lat === city.lat) &&
+    cities.some((c) => c.lon === city.lon)
+  ) {
+    console.log('already existing check', cities);
 
-export function historyListHandler(DOMParent, cities, city){
-    //kollar om nya staden finns i historiken.
-    if(cities.some(c => c.lat === city.lat) && cities.some(c => c.lon === city.lon)){
-        console.log("already existing check", cities);
-    }else if(cities.length >= 5){
-    
-        cities.pop();
-        cities.unshift(city);
-        historyListBuilder(DOMParent, cities);
-        // historyListBuilder(DOMParent, cities);
-    }else{
-        cities.unshift(city);
-        historyListBuilder(DOMParent, cities);
-        // historyListBuilder(DOMParent, cities);
-    }
+    // Limit history to 5 cities
+  } else if (cities.length >= 5) {
+    cities.pop();
+    cities.unshift(city);
+    historyListBuilder(DOMParent);
+  } else {
+    // Add the newest city to beginnin of list
+    cities.unshift(city);
+
+    //clear history container before rendering cards again
+    historyListBuilder(DOMParent);
+  }
 }
