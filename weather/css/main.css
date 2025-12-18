@@ -55,6 +55,11 @@ p {
   font-weight: 300;
 }
 
+h1,
+h2 {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6), 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
 p {
   font-size: 1.1rem;
   padding: 0.1rem;
@@ -101,6 +106,7 @@ header {
   width: 100%;
   max-width: 35rem;
 }
+
 .drop-down-element {
   border-bottom: 1px solid var(--accent-color);
   backdrop-filter: var(--glass-blur);
@@ -116,6 +122,7 @@ header {
 .drop-down-element:hover {
   background: var(--glass-bg-dark);
 }
+
 .input-container {
   display: flex;
   flex-wrap: wrap;
@@ -126,14 +133,27 @@ header {
   width: 100%;
   margin-bottom: 0.5rem;
 }
+
 .input-wrapper {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .current-weather-text {
   font-size: 20px;
+}
+
+.curr-temp-wrapper {
+  display: block;
+  font-size: 5rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6), 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.curr-extra-info {
+  font-size: 1.4rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6), 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 /* ---- Forecast / history group ----- */
@@ -190,6 +210,7 @@ header {
   margin: 2rem 0;
   padding: 0.5rem;
 }
+
 .visually-hidden {
   position: absolute;
   left: -9999px;
@@ -220,12 +241,14 @@ header {
   border: none;
   cursor: pointer;
 }
+
 #send-input:focus,
 #input:focus,
 .drop-down-element:focus {
   outline: 3px solid #005fcc;
   outline-offset: 3px;
 }
+
 #input {
   height: 3.5rem;
   width: 100%;
@@ -234,11 +257,13 @@ header {
   border-radius: 5px;
   border: none;
 }
+
 .delete-history {
   border-radius: 50%;
   padding: 2px 5px;
   border: 2px solid var(--accent-color);
 }
+
 #city-search-label {
   margin: 1rem 0;
 }

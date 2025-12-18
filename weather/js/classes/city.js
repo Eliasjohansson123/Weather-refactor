@@ -89,11 +89,11 @@ export class City {
         <h1>${this.fetchedCity.name}</h1>
         <h2>${this.fetchedCity.country}, ${this.fetchedCity.admin1}</h2>
         <article>
-            <span class = "curr-temp-wrapper">${this.weatherNow.temperature_2m} C</span>
+            <span class = "curr-temp-wrapper">${this.weatherNow.temperature_2m}&#8451;</span>
             <span class= "curr-extra-info">
-                Feels Like: ${this.weatherNow.apparent_temperature} C<br>
+                Feels Like: ${this.weatherNow.apparent_temperature}&#8451;<br>
                 Wind Speed: ${this.weatherNow.wind_speed_10m} m/s<br>
-                Humidity: ${this.weatherNow.relative_humidity_2m} %
+                Humidity: ${this.weatherNow.relative_humidity_2m}%
             </span>
         </article>    
         `;
