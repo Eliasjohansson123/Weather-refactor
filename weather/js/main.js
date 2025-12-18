@@ -79,6 +79,7 @@ async function runSearch(index) {
   historyList.cityListAdd(city);
 }
 
+//determine position of clicked item
 /**
  * Fins index of a clicked dropdown item
  * @param {Event} event - click event from dropdown item
