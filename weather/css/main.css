@@ -251,6 +251,10 @@ header {
   gap: 1.5rem;
 }
 
+#history:empty {
+  display: none;
+}
+
 .history-card > div {
   display: flex;
   align-items: center;
