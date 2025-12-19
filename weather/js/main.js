@@ -42,12 +42,13 @@ textInputEl.addEventListener(
       event.preventDefault();
       let index = findIndexOfDropItem(event);
       await runSearch(index);
-      inputWrapperEl.removeChild(dropDown.element)
+      inputWrapperEl.removeChild(dropDown.element);
+      textInputEl.value = '';
     });
-    
-    dropDown.element.addEventListener('keydown', event => {
-      if (event.key === 'Enter') event.target.click()
-      })
+
+    dropDown.element.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') event.target.click();
+    });
   }, 300)
 );
 
@@ -56,10 +57,9 @@ textInputEl.addEventListener('keydown', async (e) => {
     e.preventDefault();
     await runSearch(0);
     textInputEl.value = '';
-    inputWrapperEl.removeChild(document.querySelector(".drop-container"))
+    inputWrapperEl.removeChild(document.querySelector('.drop-container'));
   }
 });
-
 
 /**
  * Runs a weather search based obn the current input value
