@@ -48,7 +48,7 @@ export class Build {
 
       forecastText.textContent = `
             ${this.futureWeather.time[i]}
-            high:
+            High:
             ${this.futureWeather.temperature_2m_max[i]}
             - 
             ${this.futureWeather.temperature_2m_min[i]}
