@@ -67,6 +67,7 @@ export class History {
     //create and append history card for each city
     this.list.forEach((el) => {
       const historyCard = document.createElement('article');
+      const historyCardName = document.createElement('div');
       const button = document.createElement('button');
       const h3 = document.createElement('h3');
       const p_1 = document.createElement('p');
@@ -82,11 +83,12 @@ export class History {
       button.classList.add('delete-history');
 
       button.textContent = 'X';
-      h3.textContent = `${el.fetchedCity.name}`;
+      h3.textContent = `${el.fetchedCity.name},`;
       p_1.textContent = `${el.fetchedCity.country}`;
       p_2.textContent = `${el.weatherNow.temperature_2m}°C`;
 
-      historyCard.append(h3, p_1, p_2, button);
+      historyCard.append(historyCardName, button);
+      historyCardName.append(h3, p_1, p_2);
       this.parent.append(historyCard);
       //parent.insertBefore(historyCard, parent.firstChild);
     });

@@ -233,6 +233,7 @@ header {
   backdrop-filter: blur(25px);
   margin: 2rem 0;
   padding: 0.5rem;
+  max-width: 20rem;
 }
 
 .visually-hidden {
@@ -243,13 +244,31 @@ header {
 .history-card {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  /* padding: 0.1rem 1rem; */
-  /* margin: 1rem 0; */
-
-  /*   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); */
-  /*   transition: transform 0.15s ease, box-shadow 0.15s ease; */
+  padding: 1rem;
+  gap: 1.5rem;
+  max-width: 20rem;
 }
+
+.history-card > div {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex: 1;
+  border-bottom: 1px solid var(--accent-color);
+}
+
+.history-card h3 {
+  margin: 0;
+  font-weight: 500;
+}
+
+.history-card p {
+  margin: 0;
+}
+
+/* .delete-history {
+  flex-shrink: 0;
+} */
 
 /* .history-card:hover {
   transform: translateY(-2px);
