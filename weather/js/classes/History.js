@@ -72,6 +72,7 @@ export class History {
       const h3 = document.createElement('h3');
       const p_1 = document.createElement('p');
       const p_2 = document.createElement('p');
+      p_2.classList.add('text-bold');
 
       //remove city when delete button is clicked
       button.addEventListener('click', () => {
@@ -87,8 +88,8 @@ export class History {
       p_1.textContent = `${el.fetchedCity.country}`;
       p_2.textContent = `${el.weatherNow.temperature_2m}°C`;
 
-      historyCard.append(historyCardName, button);
-      historyCardName.append(h3, p_1, p_2);
+      historyCard.append(historyCardName, p_2, button);
+      historyCardName.append(h3, p_1);
       this.parent.append(historyCard);
       //parent.insertBefore(historyCard, parent.firstChild);
     });
