@@ -38,12 +38,12 @@ textInputEl.addEventListener(
       event.preventDefault();
       let index = findIndexOfDropItem(event);
       await runSearch(index);
-      inputWrapperEl.removeChild(dropDown.element)
+      inputWrapperEl.removeChild(dropDown.element);
     });
-    
-    dropDown.element.addEventListener('keydown', event => {
-      if (event.key === 'Enter') event.target.click()
-      })
+
+    dropDown.element.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') event.target.click();
+    });
   }, 300)
 );
 
@@ -52,10 +52,20 @@ textInputEl.addEventListener('keydown', async (e) => {
     e.preventDefault();
     await runSearch(0);
     textInputEl.value = '';
-    inputWrapperEl.removeChild(document.querySelector(".drop-container"))
+    inputWrapperEl.removeChild(document.querySelector('.drop-container'));
   }
 });
 
+historyEl.addEventListener('click', async (event) => {
+  if (event.target.tagName === 'BUTTON') return;
+
+  const article = event.target.closest('.history-card');
+  const articleId = parseInt(article.dataset.id);
+
+  const city = historyList.list.find((c) => c.fetchedCity.id === articleId);
+  await fetchWeatherWithHistoryCard(city);
+  // console.log(city)
+});
 
 async function runSearch(index) {
   if (!textInputEl.value.trim()) return;
@@ -66,6 +76,20 @@ async function runSearch(index) {
   city.buildMainWeather(mainWeatherEl);
   city.buildForecast(forecastEl);
   historyList.cityListAdd(city);
+}
+
+async function fetchWeatherWithHistoryCard(city) {
+  const weather = await getWeather(city.lat, city.lon);
+  city.weatherNow = weather.current;
+  city.futureWeather = weather.daily;
+
+  city.buildMainWeather(mainWeatherEl);
+  city.buildForecast(forecastEl);
+
+  historyList.list.unshift(
+  historyList.list.splice(
+  historyList.list.indexOf(city), 1)[0]);
+  historyList.buildCardsFromList()
 }
 
 function findIndexOfDropItem(event) {

@@ -71,6 +71,8 @@ export class History {
       const h3 = document.createElement('h3');
       const p_1 = document.createElement('p');
       const p_2 = document.createElement('p');
+    
+      historyCard.setAttribute("data-id", el.fetchedCity.id)
 
       //remove city when delete button is clicked
       button.addEventListener('click', () => {

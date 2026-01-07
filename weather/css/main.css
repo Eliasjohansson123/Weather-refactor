@@ -166,8 +166,10 @@ header {
 }
 
 .forecast-box {
-  border-bottom: 1px solid var(--light-gray);
   margin: 1rem;
+}
+.forecast-box:not(:last-child) {
+  border-bottom: 1px solid var(--light-gray);
 }
 
 #history {
@@ -189,6 +191,11 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  cursor: pointer;
+
+  button {
+    cursor: pointer;
+  }
   /* padding: 0.1rem 1rem; */
   /* margin: 1rem 0; */
 
