@@ -1,5 +1,5 @@
 /**
- * Maps weather codes from tAPI to CSS class names
+ * Maps weather codes from the API to CSS class names
  */
 
 const codeMap = {
@@ -16,7 +16,7 @@ const codeMap = {
   lightning: [95, 96, 99],
 };
 
-/**Returns the css class name that matches teh weather code
+/**Returns the css class name that matches the weather code
  *
  * @param {number} code - Weather code from the API
  * @returns {string|undefined} css class name for the weather
