@@ -40,7 +40,7 @@ body {
 
 /* Typography */
 h1 {
-  font-size: 3em;
+  font-size: 2em;
   margin: 0;
 }
 h2 {
@@ -184,7 +184,7 @@ header {
   min-height: 60vh;
   margin: 4rem auto;
   margin: 3rem auto;
-  background: rgba(97, 98, 104, 0.2);
+  background: rgba(97, 98, 104, 0.637);
 }
 
 .weather-container {
@@ -324,6 +324,9 @@ header {
 
 #city-search-label {
   margin: 1rem 0;
+  background: rgba(97, 98, 104, 0.637);
+  border-radius: 10px;
+  padding: 0.3rem;
 }
 
 /* Smaller Screens */
