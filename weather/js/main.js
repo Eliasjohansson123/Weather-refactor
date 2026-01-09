@@ -6,7 +6,7 @@
 import { City } from './classes/city.js';
 import { handleText } from './services/inputs.js';
 import { historyListHandler } from './functions/HistoryList/historyListHandler.js';
-import { getCity, getWeather } from './services/oldapi.js';
+import { getWeather } from './services/oldapi.js';
 import { makeDropDown, debounce } from './functions/dropDown/dropdown.js';
 import { Build } from './classes/build.js';
 import { History } from './classes/History.js';
@@ -78,6 +78,31 @@ async function runSearch(index) {
   city.buildForecast(forecastEl);
   historyList.cityListAdd(city);
 }
+
+historyEl.addEventListener('click', async (event) => {
+  if (event.target.tagName === 'BUTTON') return;
+
+  const article = event.target.closest('.history-card');
+  const articleId = parseInt(article.dataset.id);
+  
+  const city = historyList.list.find((c) => c.fetchedCity.id === articleId);
+  await fetchWeatherWithHistoryCard(city);
+});
+
+async function fetchWeatherWithHistoryCard(city) {
+  const weather = await getWeather(city.lat, city.lon);
+  city.weatherNow = weather.current;
+  city.futureWeather = weather.daily;
+
+  city.buildMainWeather(mainWeatherEl);
+  city.buildForecast(forecastEl);
+
+  historyList.list.unshift(
+  historyList.list.splice(
+  historyList.list.indexOf(city), 1)[0]);
+  historyList.buildCardsFromList()
+}
+
 
 //determine position of clicked item
 /**
