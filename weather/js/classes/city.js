@@ -149,7 +149,7 @@ export class City {
   ${this.weatherNow.temperature_2m}&#8451;
   <span class="weather-emoji">${emoji}</span>
   </span>
-  <h2> ${this.fetchedCity.admin1}, ${this.fetchedCity.country}</h2>
+  <h2> ${this.fetchedCity.admin1}, ${this.fetchedCity.country},${this.fetchedCity.name}</h2>
       <span class="curr-extra-info">
         Feels Like: ${this.weatherNow.apparent_temperature}&#8451;<br>
         Wind Speed: ${this.weatherNow.wind_speed_10m} m/s<br>
