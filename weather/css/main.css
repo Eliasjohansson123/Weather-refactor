@@ -102,10 +102,11 @@ header {
 
 .drop-container {
   position: absolute;
-  top: 20%;
+  top: 19%;
   z-index: 1000;
   width: 100%;
   max-width: 35rem;
+  backdrop-filter: var(--glass-blur);
 }
 
 .drop-down-element {
@@ -114,7 +115,7 @@ header {
   -webkit-backdrop-filter: blur(1px);
   color: var(--black-color);
   padding: 0.5rem 1rem;
-  width: 100%;
+
   border: none;
   cursor: pointer;
   padding: 1rem 0.5rem;
@@ -296,6 +297,8 @@ header {
   max-width: 35rem;
   border-radius: 5px;
   border: none;
+  font-size: 17px;
+  padding: 0 0 0 10px;
 }
 
 .delete-history {
@@ -344,7 +347,7 @@ header {
   }
   .drop-container {
     position: absolute;
-    top: 20%;
+    top: 19%;
     z-index: 1000;
     width: 100%;
   }
@@ -375,7 +378,7 @@ header {
 
   .drop-container {
     position: absolute;
-    top: 27%;
+    top: 19%;
     z-index: 1000;
     width: 100%;
   }

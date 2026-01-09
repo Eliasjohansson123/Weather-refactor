@@ -13,7 +13,7 @@ export async function getUserLocation() {
       options
     );
   });
-} 
+}
 async function showWeatherForUser() {
   try {
     // the page users see  before searching - remove innerHTML
@@ -62,7 +62,7 @@ async function showWeatherForUser() {
       'm/s'
     );
     const humidity = createWeatherDetail(
-      'Humidityyyyyyyy',
+      'Humidity',
       weather.current.relative_humidity_2m,
       '%'
     );
