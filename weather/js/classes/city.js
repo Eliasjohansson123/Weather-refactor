@@ -1,5 +1,6 @@
 // import { getCity, getWeather } from '../services/newApi.js';
 import { weatherEmojis } from '../services/weathercodes.js';
+import { animatedWeatherEmojis } from '../services/weatherCodesAnimated.js';
 import { setWeatherBackground } from '../functions/dynamicBackground.js';
 import { getCity, getWeather } from '../services/oldapi.js';
 
@@ -51,11 +52,56 @@ export class City {
    * Builds and renders 6-day forecast
    * @param {HTMLElement} parent - DOM element where the forecast will be rendered
    */
+
   buildForecast(parent) {
     parent.textContent = '';
+
     for (let i = 1; i < 6; i++) {
       const cont = document.createElement('div');
       cont.classList.add('forecast-box');
+
+      const weatherCode = this.futureWeather.weather_code[i];
+      const dateString = this.futureWeather.time[i];
+      const date = new Date(dateString);
+      const formattedDate = date.toLocaleDateString('en-US', {
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric',
+      });
+
+      const icon = document.createElement('img');
+      icon.classList.add('weather-icon-animated');
+
+      icon.src =
+        animatedWeatherEmojis[weatherCode] ||
+        'weather/js/services/animatedIcons/clear.svg';
+      icon.alt = 'Weather icon';
+
+      const dateEl = document.createElement('div');
+      dateEl.classList.add('forecast-date');
+      dateEl.textContent = formattedDate;
+
+      const tempHighEl = document.createElement('div');
+      tempHighEl.classList.add('forecast-temp-high');
+      tempHighEl.textContent = `High: ${this.futureWeather.temperature_2m_max[i]}°C`;
+
+      const tempLowEl = document.createElement('div');
+      tempLowEl.classList.add('forecast-temp-low');
+      tempLowEl.textContent = `Low: ${this.futureWeather.temperature_2m_min[i]}°C`;
+
+      cont.append(icon, dateEl, tempHighEl, tempLowEl);
+
+      parent.appendChild(cont);
+    }
+  }
+
+  /*buildForecast(parent) {
+    parent.textContent = '';
+
+    for (let i = 1; i < 6; i++) {
+      const cont = document.createElement('div');
+      cont.classList.add('forecast-box');
+
       const forecastText = document.createElement('p');
       forecastText.classList.add('forecast-text');
 
@@ -66,6 +112,15 @@ export class City {
         month: 'short',
         day: 'numeric',
       });
+      //add the new code here
+      const icon = document.createElement('img');
+      icon.classList.add('weather-icon-animated');
+
+      const weatherCode = this.futureWeather.weather_code[i];
+      icon.src = `./services/weatherCodesAnimated.js${this.getIconName(
+        weatherCode
+      )}.svg`;
+      icon.alt = 'Weather animation';
 
       forecastText.textContent = `
             ${formattedDate} 
@@ -77,7 +132,7 @@ export class City {
       parent.appendChild(cont);
     }
     // DOM-Manip
-  }
+  }*/
 
   /**
    * Renders main weahter information for selected city
