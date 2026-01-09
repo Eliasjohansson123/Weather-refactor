@@ -6,7 +6,7 @@
 import { City } from './classes/city.js';
 import { handleText } from './services/inputs.js';
 import { historyListHandler } from './functions/HistoryList/historyListHandler.js';
-import { getWeather } from './services/oldapi.js';
+import { getCity, getWeather } from './services/oldapi.js';
 import { makeDropDown, debounce } from './functions/dropDown/dropdown.js';
 import { History } from './classes/History.js';
 import { getUserLocation } from './functions/location/userLocation.js';

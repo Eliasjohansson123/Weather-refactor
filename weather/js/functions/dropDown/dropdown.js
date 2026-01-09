@@ -32,7 +32,7 @@ export async function makeDropDown(cityStr) {
   //create up to 5 dropdown options
   drop.results.slice(0, 5).forEach((el) => {
     const listElement = document.createElement('li');
-    
+
     listElement.tabIndex = 0;
     listElement.classList.add('drop-down-element');
     listElement.textContent = `${el.name}, ${el.admin1}, ${el.country}`;

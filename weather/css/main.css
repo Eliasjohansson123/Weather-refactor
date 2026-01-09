@@ -118,7 +118,7 @@ header {
 
   border: none;
   cursor: pointer;
-  padding: 1rem 0.5rem;
+  padding: 20px;
   font-size: 15px;
 }
 
@@ -353,6 +353,7 @@ header {
     top: 19%;
     z-index: 1000;
     width: 100%;
+    margin: 20px;
   }
 }
 
