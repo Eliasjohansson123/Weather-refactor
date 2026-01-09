@@ -1,0 +1,30 @@
+{
+  "name": "weather-refactor",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eliasjohansson123/Weather-refactor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Eliasjohansson123/Weather-refactor/issues"
+  },
+  "homepage": "https://github.com/Eliasjohansson123/Weather-refactor#readme",
+  "description": "",
+  "devDependencies": {
+    "jest-environment-jsdom": "^30.2.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "testMatch": [
+      "**/?(*.)+(test).mjs"
+    ]
+  }
+}

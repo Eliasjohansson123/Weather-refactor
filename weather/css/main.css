@@ -1,51 +1,414 @@
-:root{
-    margin: 0;
-    padding: 0;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300&display=swap');
+
+body {
+  /* background-image: url('../images/lightning.jpg'); */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--white-color);
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-body{
-    background-image:url("../images/images/lightning.jpg");
-    background-size: cover;
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
 }
-.info{
-    text-align: center;
-    padding: 10px 20px;
-    color: white;
-    align-content: space-around;
-    backdrop-filter:blur(6px);
-    background-color: rgba(255,255,255,0.3);
-    display:flex;
-    margin:100px auto 0 auto;
-    max-width: 80vw;
-    min-height: 60vh;
-    background: rgba(94, 94, 94, 0.24);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(3.5px);
-    border: 1px solid rgba(94, 94, 94, 0.28);
+
+:root {
+  --primary-color: rgb(233, 230, 230);
+  --secondary-color: rgb(22, 22, 22);
+  --accent-color: rgb(122, 120, 120);
+
+  --white-color: var(--primary-color);
+  --black-color: var(--secondary-color);
+  --light-gray: var(--accent-color);
+
+  --glass-bg: rgba(255, 255, 255, 0.01);
+  --glass-bg-light: rgba(255, 255, 255, 0.22);
+  --glass-bg-dark: rgba(24, 22, 22, 0.11);
+  --glass-border: rgba(94, 94, 94, 0.5);
+  --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  --glass-blur: blur(6px);
+  --glass-radius: 20px;
+
+  --wcag-button-padding: 0.5rem 1rem;
 }
-.column{
-    flex:1 1 calc(100% / 3);
-    border: dashed 2px #555;
+
+/* Typography */
+h1 {
+  font-size: 3em;
+  margin: 0;
 }
-.input-wrapper{
-    max-width:auto;
-    display:grid;
-    grid-template-columns:auto 50px ;
-    grid-template-areas:
-    "search send"
-    "list list";
+h2 {
+  font-size: 2em;
+}
+
+h1,
+h2,
+h3,
+p {
+  font-weight: 300;
+}
+
+h1,
+h2 {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6), 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+p {
+  font-size: 1.1rem;
+  padding: 0.1rem;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+li {
+  margin-bottom: 10px;
+}
+ul > li {
+  background: var(--glass-bg-light);
+  border-bottom: 1px solid var(--accent-color);
+  color: var(--black-color);
+  border-radius: 5px;
+}
+
+.text-bold {
+  font-weight: 500;
+}
+/* Layout */
+
+.column {
+  padding: 1rem;
+}
+
+/* ---- Header & Input ----- */
+
+header {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.drop-container {
+  position: absolute;
+  top: 20%;
+  z-index: 1000;
+  width: 100%;
+  max-width: 35rem;
+}
+
+.drop-down-element {
+  border-bottom: 1px solid var(--accent-color);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: blur(1px);
+  color: var(--black-color);
+  padding: 0.5rem 1rem;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  padding: 1rem 0.5rem;
+  font-size: 15px;
+}
+
+.drop-down-element:hover {
+  background: var(--glass-bg-dark);
+}
+
+.input-container {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.input-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.curr-temp-wrapper {
+  display: block;
+  font-size: 4rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6), 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.curr-extra-info {
+  font-size: 1.3rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6), 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.weather-emoji {
+  font-size: 3rem;
+}
+
+/* ---- Forecast / history group ----- */
+
+#main-weather {
+  margin-top: 4rem;
+}
+
+.weather-container {
+  display: flex;
+}
+
+/* #main-weather {
+  margin-top: auto;
+} */
+
+.info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: blur(5px);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 1em;
+  max-width: 80em;
+  min-width: auto;
+  min-height: 60vh;
+  margin: 4rem auto;
+  margin: 3rem auto;
+  background: rgba(97, 98, 104, 0.2);
+}
+
+.weather-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+#forecast {
+  background: var(--glass-bg-dark);
+  border-radius: var(--glass-radius);
+  backdrop-filter: blur(25px);
+  width: 35rem;
+  margin: 0;
+}
+
+.forecast,
+.forecast-box {
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.forecast-box {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  padding: 0.5rem 0;
+}
+
+.forecast-box:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.forecast-text {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+.visually-hidden {
+  position: absolute;
+  left: -9999px;
+}
+
+#history {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background: var(--glass-bg-dark);
+  border-radius: var(--glass-radius);
+  backdrop-filter: blur(25px);
+  margin: 2rem 0;
+  padding: 0.5rem;
+  max-width: 30rem;
+}
+
+.history-card {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  gap: 1.5rem;
+}
+
+#history:empty {
+  display: none;
+}
+
+.history-card > div {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex: 1;
+  border-bottom: 1px solid var(--accent-color);
+}
+
+.history-card h3 {
+  margin: 0;
+  font-weight: 500;
+}
+
+.history-card p {
+  margin: 0;
+}
+
+/* .history-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+} */
+
+/*wcag*/
+#send-input {
+  padding: var(--wcag-button-padding);
+  min-height: 44px;
+  min-width: 44px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+#send-input:focus,
+#input:focus,
+.drop-down-element:focus {
+  outline: 3px solid #005fcc;
+  outline-offset: 3px;
+}
+
+#input {
+  height: 3.5rem;
+  width: 100%;
+  min-width: 10rem;
+  max-width: 35rem;
+  border-radius: 5px;
+  border: none;
+}
+
+.delete-history {
+  background: none;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--primary-color);
+  opacity: 0.8;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.delete-history:focus {
+  outline: none;
+}
+
+.delete-history:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* .delete-history {
+  border-radius: 50%;
+  padding: 2px 5px;
+  border: 2px solid var(--accent-color);
+} */
+
+#city-search-label {
+  margin: 1rem 0;
+}
+
+@media (max-width: 900px) {
+  body {
+    padding: 1px 20px;
+  }
+  .weather-container {
+    display: flex;
+  }
+
+  .info {
+    flex-direction: column;
+  }
+
+  #forecast,
+  .history {
+    max-width: 100%;
+    width: 20rem;
+  }
+  .drop-container {
+    position: absolute;
+    top: 20%;
+    z-index: 1000;
+    width: 100%;
+  }
+}
+
+/* mobile */
+@media (max-width: 600px) {
+  body {
+    padding: 1px 20px;
+  }
+  .info {
+    padding: 1rem;
+    display: flex;
     justify-content: center;
+    align-items: center;
+  }
+
+  .weather-container {
+    min-width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    align-items: center;
+    /* padding: 1rem; */
+    border-radius: 12px;
+  }
+  .drop-container {
+    position: absolute;
+    top: 27%;
+    z-index: 1000;
+    width: 100%;
+  }
 }
-#input{
-    justify-self: stretch;
-    grid-area: search;
+
+.sun {
+  background-image: url('/weather/images/sun.jpg');
 }
-#send-input{
-    width:50px;
-    grid-area: send;
+.cloudy {
+  background-image: url('/weather/images/cloudy.jpg');
 }
-.drop-container{
-    grid-area: list;
-    margin-top: 10px;
-    color:white;
+
+.foggy {
+  background-image: url('/weather/images/foggy.jpg');
+}
+
+.rain {
+  background-image: url('/weather/images/rain.jpg');
+}
+
+.snow {
+  background-image: url('/weather/images/snow.jpg');
+}
+
+.lightning {
+  background-image: url('/weather/images/lightning.jpg');
 }

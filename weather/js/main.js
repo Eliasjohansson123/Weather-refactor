@@ -1,70 +1,97 @@
-import { City } from "./classes/city.js";
-import { handleText } from "./services/inputs.js";
-import { historyListHandler } from "./functions/HistoryList/historyListHandler.js";
-import { getCity, getWeather} from "./services/api.js";
-import { makeDropDown } from "./functions/dropDown/dropdown.js";
-import { Build } from "./classes/build.js";
-import { History } from "./classes/History.js";
+/**
+ * Main application entry point.
+ * Handlers user input, search flow and UI updates
+ */
 
+import { City } from './classes/city.js';
+import { handleText } from './services/inputs.js';
+import { historyListHandler } from './functions/HistoryList/historyListHandler.js';
+import { getCity, getWeather } from './services/oldapi.js';
+import { makeDropDown, debounce } from './functions/dropDown/dropdown.js';
+import { Build } from './classes/build.js';
+import { History } from './classes/History.js';
+//import { getCity, getWeather } from "./services/newApi.js";
+import { getUserLocation } from './functions/location/userLocation.js';
 
-const mainTag = document.querySelector("main");
-const mainWeatherEl = document.querySelector("#main-weather");
-const forecastEl = document.querySelector("#forecast");
-const historyEl = document.querySelector("#history");
-const textInputEl = document.querySelector("input");
-const inputWrapperEl = document.querySelector(".input-wrapper");
-const sendButtonEl = document.querySelector("#send-input");
+const mainWeatherEl = document.querySelector('#main-weather');
+const forecastEl = document.querySelector('#forecast');
+const historyEl = document.querySelector('#history');
+const textInputEl = document.querySelector('input');
+const inputWrapperEl = document.querySelector('.input-wrapper');
 
 let historyList = new History(historyEl);
 
+textInputEl.addEventListener(
+  'input',
+  debounce(async () => {
+    const query = textInputEl.value.trim();
 
+    if (!query) {
+      const old = document.querySelector('.drop-container');
+      if (old) old.remove();
+      return;
+    }
 
-sendButtonEl.addEventListener("click", async () => {
+    const dropDown = await makeDropDown(query);
 
-    const dropDown = await makeDropDown(textInputEl.value);
-    
-    // dropDown.element.children ger Key:value par där key är ordningen av barnen i containern.
-    // Index kopierar key och skickas till city-instansieringen.
-    dropDown.element.addEventListener("click", async event => {
-        let index = findIndexOfDropItem(dropDown.cityData, event);
-        const city = new City(handleText(textInputEl.value), index);
-        await city.fetchCity();
+    if (!dropDown || !dropDown.element) return;
 
-        city.buildMainWeather(mainWeatherEl);
-        city.buildForecast(forecastEl);
-        historyList.cityListAdd(city);
+    inputWrapperEl.appendChild(dropDown.element);
 
-        //console.log("HistoryList", historyList.list);
-        //historyListHandler(history, cityHistoryList, city);
-    }); /*async (e) => {
-        for(let key in dropDown.element.children){
-            if(dropDown.element.children[key] == e.target){
-                console.log("key:", key);
-                index = key;
-            }
-        }
+    dropDown.element.addEventListener('click', async (event) => {
+      event.preventDefault();
+      let index = findIndexOfDropItem(event);
+      await runSearch(index);
+      inputWrapperEl.removeChild(dropDown.element);
+      textInputEl.value = '';
+    });
 
-        const city = new City(handleText(input.value), index);
-        await city.fetchCity();
+    dropDown.element.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') event.target.click();
+    });
+  }, 300)
+);
 
-        city.buildMainWeather(mainWeather);
-        city.buildForecast(forecast);
-        historyListHandler(history, cityHistoryList, city);
-        
-    });*/
-
-    inputWrapperEl.insertBefore(dropDown.element, inputWrapperEl.firstChild);
+textInputEl.addEventListener('keydown', async (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    await runSearch(0);
+    textInputEl.value = '';
+    inputWrapperEl.removeChild(document.querySelector('.drop-container'));
+  }
 });
-function findIndexOfDropItem(data, event){    
-    for(let i = 0; i < data.results.length;i++){
-        if(i = Object.keys(event.target)){
-                console.log("target: ", event.target);
-                return i;
-            }else{
-                
-                return 0;
-            }
-        }
+
+/**
+ * Runs a weather search based obn the current input value
+ * Updates the main weather view, forecast and history
+ * @param {numnber} index - index of the selected dropdown item
+ * @returns {promise<void>}
+ */
+
+async function runSearch(index) {
+  if (!textInputEl.value.trim()) return;
+
+  const city = new City(handleText(textInputEl.value), index);
+  await city.fetchCity();
+
+  city.buildMainWeather(mainWeatherEl);
+  city.buildForecast(forecastEl);
+  historyList.cityListAdd(city);
 }
 
-//      Testing
+//determine position of clicked item
+/**
+ * Fins index of a clicked dropdown item
+ * @param {Event} event - click event from dropdown item
+ * @returns {number} - Index of the clicked element
+ */
+function findIndexOfDropItem(event) {
+  const children = [...event.target.parentElement.children];
+  return children.indexOf(event.target);
+}
+
+// const sundsvall = await getCity('Sundsvall');
+// const weather = await getWeather(
+//   sundsvall.results[0].latitude,
+//   sundsvall.results[0].longitude
+// );
