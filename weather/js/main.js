@@ -7,6 +7,7 @@ import { City } from './classes/city.js';
 import { handleText } from './services/inputs.js';
 import { makeDropDown, debounce } from './functions/dropDown/dropdown.js';
 import { History } from './classes/History.js';
+import { getUserLocation } from './functions/location/userLocation.js'; 
 //import { getCity, getWeather } from "./services/newApi.js";
 
 const mainWeatherEl = document.querySelector('#main-weather');
