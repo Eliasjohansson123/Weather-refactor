@@ -95,45 +95,6 @@ export class City {
     }
   }
 
-  /*buildForecast(parent) {
-    parent.textContent = '';
-
-    for (let i = 1; i < 6; i++) {
-      const cont = document.createElement('div');
-      cont.classList.add('forecast-box');
-
-      const forecastText = document.createElement('p');
-      forecastText.classList.add('forecast-text');
-
-      const dateString = this.futureWeather.time[i];
-      const date = new Date(dateString);
-      const formattedDate = date.toLocaleDateString('en-US', {
-        weekday: 'short',
-        month: 'short',
-        day: 'numeric',
-      });
-      //add the new code here
-      const icon = document.createElement('img');
-      icon.classList.add('weather-icon-animated');
-
-      const weatherCode = this.futureWeather.weather_code[i];
-      icon.src = `./services/weatherCodesAnimated.js${this.getIconName(
-        weatherCode
-      )}.svg`;
-      icon.alt = 'Weather animation';
-
-      forecastText.textContent = `
-            ${formattedDate} 
-             ${weatherEmojis[this.futureWeather.weather_code[i]]}
-            High: ${this.futureWeather.temperature_2m_max[i]}°C
-            Low: ${this.futureWeather.temperature_2m_min[i]}°C
-            `;
-      cont.appendChild(forecastText);
-      parent.appendChild(cont);
-    }
-    // DOM-Manip
-  }*/
-
   /**
    * Renders main weahter information for selected city
    *
