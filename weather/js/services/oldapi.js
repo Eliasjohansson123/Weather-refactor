@@ -18,18 +18,6 @@ export async function getCity(city) {
     console.error(error.message);
   }
 }
-// export async function getWeather(lat, lon) {
-//   const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=weather_code,temperature_2m_max,temperature_2m_min&current=weather_code,showers,temperature_2m,apparent_temperature,wind_speed_10m,relative_humidity_2m,apparent_temperature&timezone=Europe%2FBerlin&forecast_days=7`;
-
-//   try {
-//     const res = await fetch(url);
-//     if (!res.ok) throw new Error('Weather fetch failed');
-//     const data = await res.json();
-//     return data;
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// }
 
 /**
  * Fetches current adn daily weather data for a location Using Open-Meteo

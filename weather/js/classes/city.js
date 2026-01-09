@@ -1,5 +1,6 @@
 // import { getCity, getWeather } from '../services/newApi.js';
 import { weatherEmojis } from '../services/weathercodes.js';
+import { animatedWeatherEmojis } from '../services/weatherCodesAnimated.js';
 import { setWeatherBackground } from '../functions/dynamicBackground.js';
 import { getCity, getWeather } from '../services/oldapi.js';
 
@@ -51,14 +52,15 @@ export class City {
    * Builds and renders 6-day forecast
    * @param {HTMLElement} parent - DOM element where the forecast will be rendered
    */
+
   buildForecast(parent) {
     parent.textContent = '';
+
     for (let i = 1; i < 6; i++) {
       const cont = document.createElement('div');
       cont.classList.add('forecast-box');
-      const forecastText = document.createElement('p');
-      forecastText.classList.add('forecast-text');
 
+      const weatherCode = this.futureWeather.weather_code[i];
       const dateString = this.futureWeather.time[i];
       const date = new Date(dateString);
       const formattedDate = date.toLocaleDateString('en-US', {
@@ -67,16 +69,30 @@ export class City {
         day: 'numeric',
       });
 
-      forecastText.textContent = `
-            ${formattedDate} 
-             ${weatherEmojis[this.futureWeather.weather_code[i]]}
-            High: ${this.futureWeather.temperature_2m_max[i]}°C
-            Low: ${this.futureWeather.temperature_2m_min[i]}°C
-            `;
-      cont.appendChild(forecastText);
+      const icon = document.createElement('img');
+      icon.classList.add('weather-icon-animated');
+
+      icon.src =
+        animatedWeatherEmojis[weatherCode] ||
+        'weather/js/services/animatedIcons/clear.svg';
+      icon.alt = 'Weather icon';
+
+      const dateEl = document.createElement('div');
+      dateEl.classList.add('forecast-date');
+      dateEl.textContent = formattedDate;
+
+      const tempHighEl = document.createElement('div');
+      tempHighEl.classList.add('forecast-temp-high');
+      tempHighEl.textContent = `High: ${this.futureWeather.temperature_2m_max[i]}°C`;
+
+      const tempLowEl = document.createElement('div');
+      tempLowEl.classList.add('forecast-temp-low');
+      tempLowEl.textContent = `Low: ${this.futureWeather.temperature_2m_min[i]}°C`;
+
+      cont.append(icon, dateEl, tempHighEl, tempLowEl);
+
       parent.appendChild(cont);
     }
-    // DOM-Manip
   }
 
   /**
@@ -94,7 +110,7 @@ export class City {
   ${this.weatherNow.temperature_2m}&#8451;
   <span class="weather-emoji">${emoji}</span>
   </span>
-  <h2> ${this.fetchedCity.admin1}, ${this.fetchedCity.country}</h2>
+  <h2> ${this.fetchedCity.admin1}, ${this.fetchedCity.country},${this.fetchedCity.name}</h2>
       <span class="curr-extra-info">
         Feels Like: ${this.weatherNow.apparent_temperature}&#8451;<br>
         Wind Speed: ${this.weatherNow.wind_speed_10m} m/s<br>

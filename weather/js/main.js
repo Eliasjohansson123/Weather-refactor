@@ -8,10 +8,9 @@ import { handleText } from './services/inputs.js';
 import { historyListHandler } from './functions/HistoryList/historyListHandler.js';
 import { getCity, getWeather } from './services/oldapi.js';
 import { makeDropDown, debounce } from './functions/dropDown/dropdown.js';
-import { Build } from './classes/build.js';
 import { History } from './classes/History.js';
-//import { getCity, getWeather } from "./services/newApi.js";
 import { getUserLocation } from './functions/location/userLocation.js';
+//import { getCity, getWeather } from "./services/newApi.js";
 
 const mainWeatherEl = document.querySelector('#main-weather');
 const forecastEl = document.querySelector('#forecast');
@@ -62,7 +61,7 @@ textInputEl.addEventListener('keydown', async (e) => {
 });
 
 /**
- * Runs a weather search based obn the current input value
+ * Runs a weather search based on the current input value
  * Updates the main weather view, forecast and history
  * @param {numnber} index - index of the selected dropdown item
  * @returns {promise<void>}
@@ -79,6 +78,37 @@ async function runSearch(index) {
   historyList.cityListAdd(city);
 }
 
+historyEl.addEventListener('click', async (event) => {
+  if (event.target.tagName === 'BUTTON') return;
+
+  const article = event.target.closest('.history-card');
+  const articleId = parseInt(article.dataset.id);
+
+  const city = historyList.list.find((c) => c.fetchedCity.id === articleId);
+  await fetchWeatherWithHistoryCard(city);
+});
+
+/**
+ * Runs a weather search based on which post in the search history user clicks
+ * Updates the main weather view and forecast and sorts history to reflect interaction
+ * @param {object} city - the City instance of clicked history item, stored in the history list
+ * @returns {promise<void>}
+ */
+
+async function fetchWeatherWithHistoryCard(city) {
+  const weather = await getWeather(city.lat, city.lon);
+  city.weatherNow = weather.current;
+  city.futureWeather = weather.daily;
+
+  city.buildMainWeather(mainWeatherEl);
+  city.buildForecast(forecastEl);
+
+  historyList.list.unshift(
+    historyList.list.splice(historyList.list.indexOf(city), 1)[0]
+  );
+  historyList.buildCardsFromList();
+}
+
 //determine position of clicked item
 /**
  * Fins index of a clicked dropdown item
@@ -89,9 +119,3 @@ function findIndexOfDropItem(event) {
   const children = [...event.target.parentElement.children];
   return children.indexOf(event.target);
 }
-
-// const sundsvall = await getCity('Sundsvall');
-// const weather = await getWeather(
-//   sundsvall.results[0].latitude,
-//   sundsvall.results[0].longitude
-// );
